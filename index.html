@@ -230,6 +230,74 @@ iframe{
     transform:translate(-50%,-170px) scale(0.8) rotate(-15deg);
   }
 }
+
+
+/* 📱 MOBİL TASARIM */
+@media (max-width:600px){
+
+  body{
+    font-size:15px;
+  }
+
+  header{
+    padding:40px 15px 20px;
+  }
+
+  h1{
+    font-size:58px;
+    margin:10px 0;
+  }
+
+  header p{
+    font-size:14px;
+  }
+
+  section{
+    width:92%;
+    margin:18px auto;
+    padding:23px 17px;
+    border-radius:20px;
+  }
+
+  h2{
+    font-size:22px;
+  }
+
+  .counter{
+    font-size:19px;
+    line-height:1.7;
+  }
+
+  #letter p{
+    font-size:15px;
+    line-height:1.9;
+    text-align:left;
+  }
+
+  button{
+    width:100%;
+    padding:14px;
+    font-size:16px;
+  }
+
+  iframe{
+    height:352px;
+  }
+
+  footer{
+    padding:20px 15px 30px;
+    font-size:14px;
+  }
+
+  .heart{
+    font-size:25px;
+  }
+
+  #floating-hearts span{
+    font-size:20px !important;
+  }
+
+}
 </style>
 
 </head>
@@ -249,40 +317,35 @@ iframe{
 
 <header>
   <div class="heart">♡</div>
-  <p>Küçük bir site, kocaman bir his...</p>
-  <h1>askim ♡</h1>
+  <p>elimden pek gelmesede bu benden sana bebeğim...</p>
+  <h1>nazlimm ♡</h1>
   <p>iyiki benım sevgılım olmussun.</p>
 </header>
 
 <section>
   <h2>Birlikte geçen zaman ⏳</h2>
   <div class="counter" id="counter">Hesaplanıyor...</div>
-  <p>Seninle geçen her an benim için değerli. ♡</p>
+  <p>seninle geçen her an benim için sandıgından cok daha degerli askim ♡</p>
 </section>
 
 <section>
-  <h2>Sana küçük bir mektup 💌</h2>
-  <p>Burada senin için küçük bir sürpriz var...</p>
+  <h2>bu benden sana askim 💌</h2>
+  <p>buraya senın ıcın bır seyler biraktim...</p>
 
-<button onclick="showLetter()">Mektubunu aç ♡</button>
+  <button onclick="showLetter()">Mektubunu aç ♡</button>
 
   <div id="letter">
-    <p>Canım Nazlı'm,</p>
+    <p>bebegim nazlimaa</p>
 
-```
-<p>
-  nazlimmm askimmm bebegimmm herseyımm senı cok sevıyorum sana deger veren herkesten senı daha cok sevıyorum hayatimda gordugum en guzel kızsın
-  iyiki benım sevgılım olmussun senı cok cok cok ama cok sevıyorum sana verdıgım degerın haddi hesabı yok,
-  bazen senı uzebılırım salak salak konusup mal mal anlatıp canını sıkabılırım cok ozur dılerım sevgılım ama ne yasarsak yasarsak yasayalım senı cok sevecegım
-  benden sıkılsanda senı cok sevıcem her zaman benım kalbimde yerin olucak senı cok sevıyorum bebegimmmm
-</p>
+    <p>
+      nazlimmm askimmm bebegimmm herseyımm senı cok sevıyorum sana deger veren herkesten senı daha cok sevıyorum hayatimda gordugum en guzel kızsın
+      iyiki benım sevgılım olmussun senı cok cok cok ama cok sevıyorum sana verdıgım degerın haddi hesabı yok,
+      bazen senı uzebılırım salak salak konusup mal mal anlatıp canını sıkabılırım cok ozur dılerım sevgılım ama ne yasarsak yasarsak yasayalım senı cok sevecegım
+      benden sıkılsanda senı cok sevıcem her zaman benım kalbimde yerin olucak senı cok sevıyorum bebegimmmm her zaman yaninda olucam her zaman senı sevecegım iyiki
+      benım sevgılım olmussun sana cok asıgımmm
+    </p>
 
-<p>
-</p>
-
-<p>iyiki varsın bebegim seni cok sevıyorum ♡</p>
-```
-
+    <p>iyiki varsın bebegim seni cok sevıyorum ♡</p>
   </div>
 </section>
 
@@ -307,6 +370,7 @@ iframe{
 </footer>
 
 <script>
+
 // İlişkinizin başlangıç tarihi
 const baslangic = new Date("2026-09-20T00:00:00");
 
@@ -334,6 +398,7 @@ document.addEventListener("click", function(e){
   kalp.className = "click-heart";
 
   const kalpler = ["♡","♥","💗","💕"];
+
   kalp.textContent =
     kalpler[Math.floor(Math.random() * kalpler.length)];
 
@@ -350,6 +415,7 @@ document.addEventListener("click", function(e){
 
 sayaciGuncelle();
 setInterval(sayaciGuncelle,1000);
+
 </script>
 
 </body>
