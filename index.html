@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bebegime ♡</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:#71364f;
+  background:linear-gradient(145deg,#ffe5ef,#fff5f8,#ffc6dc);
+  min-height:100vh;
+  text-align:center;
+}
+header{padding:55px 15px 30px}
+h1{font-size:clamp(48px,12vw,85px);margin:12px;color:#d94f83}
+h2{color:#d94f83}
+p{line-height:1.8}
+section{
+  width:min(650px,90%);
+  margin:25px auto;
+  padding:28px 22px;
+  border:1px solid #ffffff;
+  border-radius:25px;
+  background:#ffffffb8;
+  box-shadow:0 10px 35px #d94f8320;
+}
+button{
+  border:0;border-radius:25px;padding:13px 22px;
+  background:#e96b9b;color:white;font-size:16px;
+  cursor:pointer;
+}
+#letter{display:none}
+.heart{font-size:28px;animation:pulse 1.3s infinite}
+@keyframes pulse{50%{transform:scale(1.2)}}
+.counter{font-size:24px;font-weight:bold;color:#d94f83}
+footer{padding:25px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="heart">♡</div>
+  <p>Küçük bir site, kocaman bir his...</p>
+  <h1>askim ♡</h1>
+  <p>iyiki benım sevgılım olmussun.</p>
+</header>
+
+<section>
+  <h2>Birlikte geçen zaman ⏳</h2>
+  <div class="counter" id="counter">Hesaplanıyor...</div>
+  <p>Seninle geçen her an benim için değerli. ♡</p>
+</section>
+
+<section>
+  <h2>Sana küçük bir mektup 💌</h2>
+  <p>Burada senin için küçük bir sürpriz var...</p>
+  <button onclick="showLetter()">Mektubunu aç ♡</button>
+  <div id="letter">
+    <p>Canım Nazlı'm,</p>
+    <p>
+      nazlimmm askimmm bebegimmm herseyımm senı cok sevıyorum sana deger veren herkesten senı daha cok sevıyorum hayatimda gordugum en guzel kızsın 
+      iyiki benım sevgılım olmussun senı cok cok cok ama cok sevıyorum sana verdıgım degerın haddi hesabı yok, 
+      bazen senı uzebılırım salak salak konusup mal mal anlatıp canını sıkabılırım cok ozur dılerım sevgılım ama ne yasarsak yasayalım senı cok sevecegım
+      benden sıkılsanda senı cok sevıcem her zaman benım kalbimde yerin olucak senı cok sevıyorum bebegimmmm
+    </p>
+    <p>
+      Her şeyi bir anda mükemmel yapmak zorunda değiliz.
+      Birbirimizi anlayalım, bol bol gülelim ve
+      birlikte güzel anılar biriktirelim.
+    </p>
+    <p>iyiki varsın bebegim seni cok sevıyorum ♡</p>
+  </div>
+</section>
+
+<section>
+  <h2>Bizim şarkımız 🎵</h2>
+  <p>Buraya kendi seçtiğin şarkıyı ekleyebiliriz.</p>
+  <p><small>Müzik dosyasını eklediğimizde burada çalacak.</small></p>
+  <!-- Müzik dosyası ekleyince aşağıdaki satırı aç:
+  <audio controls src="music.mp3"></audio>
+  -->
+</section>
+
+<footer>
+ senınle cok daha guzel gunlere bebegım ♡
+</footer>
+
+<script>
+// İlişkinizin başlangıç tarihini buraya yaz.
+// Örnek tarih: 20 Eylül 2026
+const baslangic = new Date("2026-09-20T00:00:00");
+
+function sayaciGuncelle(){
+  const fark = Date.now() - baslangic.getTime();
+  const gun = Math.floor(fark / 86400000);
+  const saat = Math.floor((fark % 86400000) / 3600000);
+  const dakika = Math.floor((fark % 3600000) / 60000);
+  const saniye = Math.floor((fark % 60000) / 1000);
+
+  document.getElementById("counter").textContent =
+    `${gun} gün ${saat} saat ${dakika} dakika ${saniye} saniye ♡`;
+}
+
+function showLetter(){
+  const mektup = document.getElementById("letter");
+  mektup.style.display = "block";
+}
+
+sayaciGuncelle();
+setInterval(sayaciGuncelle,1000);
+</script>
+
+</body>
+</html>
