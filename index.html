@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -7,42 +7,245 @@
 <title>bebegime ♡</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  color:#71364f;
-  background:linear-gradient(145deg,#ffe5ef,#fff5f8,#ffc6dc);
+  color:#fff;
+  background:
+    radial-gradient(circle at 15% 15%, #ff5f9e35 0%, transparent 30%),
+    radial-gradient(circle at 85% 80%, #9d5cff35 0%, transparent 30%),
+    linear-gradient(135deg,#180b24,#30152f,#160b20);
   min-height:100vh;
   text-align:center;
+  overflow-x:hidden;
 }
-header{padding:55px 15px 30px}
-h1{font-size:clamp(48px,12vw,85px);margin:12px;color:#d94f83}
-h2{color:#d94f83}
-p{line-height:1.8}
+
+header{
+  padding:55px 15px 30px;
+}
+
+h1{
+  font-size:clamp(48px,12vw,85px);
+  margin:12px;
+  color:#ff7eb3;
+  text-shadow:0 0 20px #ff4f9a80,0 0 45px #ff4f9a40;
+}
+
+h2{
+  color:#ff9bc2;
+  text-shadow:0 0 12px #ff5f9e45;
+}
+
+p{
+  line-height:1.8;
+}
+
 section{
   width:min(650px,90%);
   margin:25px auto;
   padding:28px 22px;
-  border:1px solid #ffffff;
+  border:1px solid #ffffff20;
   border-radius:25px;
-  background:#ffffffb8;
-  box-shadow:0 10px 35px #d94f8320;
+  background:#ffffff0d;
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+  box-shadow:
+    0 10px 40px #00000045,
+    inset 0 1px 0 #ffffff15;
+  position:relative;
+  z-index:2;
 }
+
 button{
-  border:0;border-radius:25px;padding:13px 22px;
-  background:#e96b9b;color:white;font-size:16px;
+  border:0;
+  border-radius:25px;
+  padding:13px 22px;
+  background:linear-gradient(135deg,#e96b9b,#c44f8c);
+  color:white;
+  font-size:16px;
   cursor:pointer;
+  transition:0.3s ease;
+  box-shadow:0 8px 20px #e96b9b35;
 }
-#letter{display:none}
-.heart{font-size:28px;animation:pulse 1.3s infinite}
-@keyframes pulse{50%{transform:scale(1.2)}}
-.counter{font-size:24px;font-weight:bold;color:#d94f83}
-footer{padding:25px}
+
+button:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 12px 28px #e96b9b55;
+}
+
+#letter{
+  display:none;
+  animation:fadeIn 0.5s ease;
+}
+
+.heart{
+  font-size:28px;
+  animation:pulse 1.3s infinite;
+  color:#ff8fba;
+  text-shadow:0 0 15px #ff5f9e;
+}
+
+@keyframes pulse{
+  50%{
+    transform:scale(1.2);
+  }
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.counter{
+  font-size:24px;
+  font-weight:bold;
+  color:#ff8fba;
+  text-shadow:0 0 15px #ff5f9e55;
+}
+
+footer{
+  padding:25px;
+  color:#f8bad2;
+  position:relative;
+  z-index:2;
+}
+
+iframe{
+  box-shadow:0 10px 30px #00000035;
+}
+
+/* Arka planda uçuşan kalpler */
+#floating-hearts{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+#floating-hearts span{
+  position:absolute;
+  bottom:-60px;
+  color:#ff8fba;
+  font-size:24px;
+  opacity:0;
+  animation:floatHeart 9s linear infinite;
+  text-shadow:0 0 12px #ff5f9e;
+}
+
+#floating-hearts span:nth-child(1){
+  left:8%;
+  animation-delay:0s;
+  font-size:20px;
+}
+
+#floating-hearts span:nth-child(2){
+  left:22%;
+  animation-delay:2s;
+  font-size:27px;
+}
+
+#floating-hearts span:nth-child(3){
+  left:38%;
+  animation-delay:4s;
+  font-size:18px;
+}
+
+#floating-hearts span:nth-child(4){
+  left:55%;
+  animation-delay:1s;
+  font-size:25px;
+}
+
+#floating-hearts span:nth-child(5){
+  left:73%;
+  animation-delay:3s;
+  font-size:21px;
+}
+
+#floating-hearts span:nth-child(6){
+  left:90%;
+  animation-delay:5s;
+  font-size:29px;
+}
+
+@keyframes floatHeart{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+
+  15%{
+    opacity:0.45;
+  }
+
+  70%{
+    opacity:0.3;
+  }
+
+  100%{
+    transform:translateY(-115vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* Tıklayınca çıkan kalpler */
+.click-heart{
+  position:fixed;
+  pointer-events:none;
+  font-size:24px;
+  color:#ff79ad;
+  z-index:9999;
+  animation:clickHeart 1s ease-out forwards;
+  text-shadow:0 0 10px #ff4f9a;
+}
+
+@keyframes clickHeart{
+  0%{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(0.5) rotate(0deg);
+  }
+
+  50%{
+    opacity:1;
+    transform:translate(-50%,-100px) scale(1.2) rotate(15deg);
+  }
+
+  100%{
+    opacity:0;
+    transform:translate(-50%,-170px) scale(0.8) rotate(-15deg);
+  }
+}
 </style>
+
 </head>
 
 <body>
+
+<!-- Arka plan kalpleri -->
+
+<div id="floating-hearts">
+  <span>♡</span>
+  <span>♡</span>
+  <span>♡</span>
+  <span>♡</span>
+  <span>♡</span>
+  <span>♡</span>
+</div>
 
 <header>
   <div class="heart">♡</div>
@@ -60,44 +263,56 @@ footer{padding:25px}
 <section>
   <h2>Sana küçük bir mektup 💌</h2>
   <p>Burada senin için küçük bir sürpriz var...</p>
-  <button onclick="showLetter()">Mektubunu aç ♡</button>
+
+<button onclick="showLetter()">Mektubunu aç ♡</button>
+
   <div id="letter">
     <p>Canım Nazlı'm,</p>
-    <p>
-      nazlimmm askimmm bebegimmm herseyımm senı cok sevıyorum sana deger veren herkesten senı daha cok sevıyorum hayatimda gordugum en guzel kızsın 
-      iyiki benım sevgılım olmussun senı cok cok cok ama cok sevıyorum sana verdıgım degerın haddi hesabı yok, 
-      bazen senı uzebılırım salak salak konusup mal mal anlatıp canını sıkabılırım cok ozur dılerım sevgılım ama ne yasarsak yasayalım senı cok sevecegım
-      benden sıkılsanda senı cok sevıcem her zaman benım kalbimde yerin olucak senı cok sevıyorum bebegimmmm
-    </p>
-    <p>
-      Her şeyi bir anda mükemmel yapmak zorunda değiliz.
-      Birbirimizi anlayalım, bol bol gülelim ve
-      birlikte güzel anılar biriktirelim.
-    </p>
-    <p>iyiki varsın bebegim seni cok sevıyorum ♡</p>
+
+```
+<p>
+  nazlimmm askimmm bebegimmm herseyımm senı cok sevıyorum sana deger veren herkesten senı daha cok sevıyorum hayatimda gordugum en guzel kızsın
+  iyiki benım sevgılım olmussun senı cok cok cok ama cok sevıyorum sana verdıgım degerın haddi hesabı yok,
+  bazen senı uzebılırım salak salak konusup mal mal anlatıp canını sıkabılırım cok ozur dılerım sevgılım ama ne yasarsak yasarsak yasayalım senı cok sevecegım
+  benden sıkılsanda senı cok sevıcem her zaman benım kalbimde yerin olucak senı cok sevıyorum bebegimmmm
+</p>
+
+<p>
+</p>
+
+<p>iyiki varsın bebegim seni cok sevıyorum ♡</p>
+```
+
   </div>
 </section>
 
 <section>
-  <h2>Bizim şarkımız 🎵</h2>
-  <p>Buraya kendi seçtiğin şarkıyı ekleyebiliriz.</p>
-  <p><small>Müzik dosyasını eklediğimizde burada çalacak.</small></p>
-  <!-- Müzik dosyası ekleyince aşağıdaki satırı aç:
-  <audio controls src="music.mp3"></audio>
-  -->
+  <h2>Bizim playlistimiz 🎵</h2>
+  <p>bizim sarkilarimizz♡</p>
+
+  <iframe
+    style="border-radius:12px"
+    src="https://open.spotify.com/embed/playlist/6NyRmMt13dUIeXdh6IEstU"
+    width="100%"
+    height="352"
+    frameborder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
 </section>
 
 <footer>
- senınle cok daha guzel gunlere bebegım ♡
+  senınle cok daha guzel gunlere bebegım ♡
 </footer>
 
 <script>
-// İlişkinizin başlangıç tarihini buraya yaz.
-// Örnek tarih: 20 Eylül 2026
+// İlişkinizin başlangıç tarihi
 const baslangic = new Date("2026-09-20T00:00:00");
 
 function sayaciGuncelle(){
   const fark = Date.now() - baslangic.getTime();
+
   const gun = Math.floor(fark / 86400000);
   const saat = Math.floor((fark % 86400000) / 3600000);
   const dakika = Math.floor((fark % 3600000) / 60000);
@@ -111,6 +326,27 @@ function showLetter(){
   const mektup = document.getElementById("letter");
   mektup.style.display = "block";
 }
+
+// Siteye tıklayınca kalp çıkar
+document.addEventListener("click", function(e){
+
+  const kalp = document.createElement("div");
+  kalp.className = "click-heart";
+
+  const kalpler = ["♡","♥","💗","💕"];
+  kalp.textContent =
+    kalpler[Math.floor(Math.random() * kalpler.length)];
+
+  kalp.style.left = e.clientX + "px";
+  kalp.style.top = e.clientY + "px";
+
+  document.body.appendChild(kalp);
+
+  setTimeout(() => {
+    kalp.remove();
+  },1000);
+
+});
 
 sayaciGuncelle();
 setInterval(sayaciGuncelle,1000);
