@@ -980,6 +980,97 @@ body.birthday-mode .hero-badge{
   }
 }
 
+
+/* Saat mesajı + özel gün motoru */
+.time-message{
+  width:min(620px,92%);
+  margin:13px auto 0;
+  color:#eec1d2;
+  font-size:13px;
+  line-height:1.7;
+  opacity:.92;
+}
+
+#specialDayBanner{
+  display:none;
+  border-color:rgba(255,255,255,.17);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,126,179,.14),transparent 38%),
+    linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.045));
+}
+
+#specialDayBanner.show{
+  display:block;
+}
+
+.special-day-icon{
+  font-size:40px;
+  margin-bottom:7px;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,.18));
+}
+
+.special-day-title{
+  margin:0 0 9px;
+  color:#ffadd0;
+  font-size:clamp(24px,5vw,34px);
+}
+
+.special-day-text{
+  width:min(620px,94%);
+  margin:0 auto;
+  color:#f4c9d9;
+  line-height:1.8;
+}
+
+#midnightModal{
+  position:fixed;
+  inset:0;
+  z-index:99997;
+  display:grid;
+  place-items:center;
+  padding:22px;
+  background:rgba(5,5,15,.82);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .35s ease,visibility .35s ease;
+}
+
+#midnightModal.open{
+  opacity:1;
+  visibility:visible;
+}
+
+.midnight-box{
+  width:min(430px,92vw);
+  padding:31px 24px;
+  border-radius:29px;
+  border:1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(117,137,255,.18),transparent 38%),
+    linear-gradient(145deg,rgba(20,17,45,.97),rgba(12,9,26,.98));
+  box-shadow:0 25px 80px rgba(0,0,0,.48);
+}
+
+.midnight-clock{
+  font-size:43px;
+  margin-bottom:8px;
+}
+
+.midnight-box h3{
+  margin:0 0 10px;
+  color:#c8d2ff;
+  font-size:27px;
+}
+
+.midnight-box p{
+  margin:0 0 18px;
+  color:#d8d7ec;
+  line-height:1.8;
+  font-size:14px;
+}
+
 footer{
   position:relative;
   z-index:3;
@@ -1276,9 +1367,17 @@ footer{
   <div class="hero-badge"><span class="hero-heart">♡</span> sadece sana özel</div>
   <h1>nazlimm ♡</h1>
   <p class="hero-sub">elimden pek gelmesede bu benden sana bebeğim... iyiki benım sevgılım olmussun.</p>
+  <p class="time-message" id="timeMessage"></p>
 </header>
 
 <main>
+
+  <section class="reveal" id="specialDayBanner">
+    <div class="special-day-icon" id="specialDayIcon">♡</div>
+    <h2 class="special-day-title" id="specialDayTitle"></h2>
+    <p class="special-day-text" id="specialDayText"></p>
+  </section>
+
 
   <section class="reveal" id="birthdaySpecial">
     <div class="birthday-cake">🎂</div>
@@ -1450,9 +1549,9 @@ footer{
       <div id="endSurpriseMessage" aria-hidden="true">
         <div class="end-message-inner">
           <p class="end-message-text">
-            saka maka buraya kadar baktıysan harbi cok tatlısın aq 😭
-            bu sıteyı yaparken tek dusundugum sey sen gorunce mutlu ol yeterdı.
-            iyiki varsın bebegimmm senı cok sevıyorum ♡
+            buraya kadar geldıysen sana son kez bısey soylıyım...
+            bu sıteyı yaparken kac kere ne koysam diye dusundum bilmiyom ama tek istedigim acınca yuzunun gulmesiydi.
+            bazen malım bazen sinirini bozuyom ama senı gercekten cok sevıyorum bebegimmm iyiki varsın ♡
           </p>
         </div>
       </div>
@@ -1465,6 +1564,19 @@ footer{
   senınle cok daha guzel gunlere bebegım
   <button class="secret-heart" id="secretHeart" type="button" aria-label="Gizli kalp">♡</button>
 </footer>
+
+
+<div id="midnightModal" aria-hidden="true">
+  <div class="midnight-box" role="dialog" aria-modal="true" aria-labelledby="midnightTitle">
+    <div class="midnight-clock">00:00</div>
+    <h3 id="midnightTitle">yeni bi gun oldu askim ♡</h3>
+    <p>
+      saat tam 00.00 olmus ve sen yine burdasın 😭
+      yeni gunun ilk mesajı da benden olsun dedim... umarım bugunun cok guzel gecer bebegimmm ♡
+    </p>
+    <button class="soft-button" id="closeMidnightButton" type="button">tamammm ♡</button>
+  </div>
+</div>
 
 <div id="secretModal" aria-hidden="true">
   <div class="secret-box" role="dialog" aria-modal="true" aria-labelledby="secretTitle">
@@ -1561,6 +1673,171 @@ footer{
       var open = endSurpriseMessage.classList.toggle("open");
       endSurpriseMessage.setAttribute("aria-hidden",String(!open));
       endSurpriseButton.textContent = open ? "tamam kapat 😭" : "son bı sey var ♡";
+    });
+  }
+
+
+
+  var timeMessage = document.getElementById("timeMessage");
+  var specialDayBanner = document.getElementById("specialDayBanner");
+  var specialDayIcon = document.getElementById("specialDayIcon");
+  var specialDayTitle = document.getElementById("specialDayTitle");
+  var specialDayText = document.getElementById("specialDayText");
+
+  function getTimeMessage(now){
+    var hour = now.getHours();
+
+    if(hour >= 5 && hour < 12){
+      return "gunaydın bebegimmm umarım guzel uyanmıssındır ♡";
+    }
+
+    if(hour >= 12 && hour < 18){
+      return "gunun nasıl gecıyo askimmm arada buraya da bak tamam mı ♡";
+    }
+
+    if(hour >= 18 && hour < 23){
+      return "aksam olmus yine... gunun nasıl gectı anlatırsın bana ♡";
+    }
+
+    return "uyumadın mı hala aq 😭 hadi cok gec olmadan uyu bebegim";
+  }
+
+  function updateTimeMessage(){
+    if(timeMessage){
+      timeMessage.textContent = getTimeMessage(new Date());
+    }
+  }
+
+  updateTimeMessage();
+  window.setInterval(updateTimeMessage,60000);
+
+  function getSpecialDay(now){
+    var month = now.getMonth();
+    var day = now.getDate();
+
+    if(month === 0 && day === 1){
+      return {
+        icon:"✨",
+        title:"yenı yılın ilk gunuu",
+        text:"yenı yıla da senle gırmek ayrı guzel askimmm umarım bu yıl ikimiz icin cok guzel gecer ♡"
+      };
+    }
+
+    if(month === 1 && day === 14){
+      return {
+        icon:"💗",
+        title:"sevgililer gunumuzmus",
+        text:"normalde de senı sevıyom zaten ama bugun bahanesı var 😭 iyiki benım sevgılımsın bebegimmm ♡"
+      };
+    }
+
+    if(month === 8 && day === 20){
+      return {
+        icon:"♡",
+        title:"bugun bizim gunumuz",
+        text:"20 eylul... burdan baslamıstık askimmm zaman harbi hızlı gecıyo. iyiki senle baslamısım ♡"
+      };
+    }
+
+    if(month === 11 && day === 31){
+      return {
+        icon:"🎉",
+        title:"yılın son gunuuu",
+        text:"bı yılı daha kapatıyoz... yenı yılda da yanımda ol yeter bebegimmm ♡"
+      };
+    }
+
+    if(day === 20){
+      var start = new Date(2026,8,20);
+      var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+
+      if(months > 0){
+        return {
+          icon:"♡",
+          title:months + ". ayımız olmus",
+          text:"ayın 20sı geldı yine 😭 zaman gecıyo ama ben hala aynı sekılde senı cok sevıyorum askimmm ♡"
+        };
+      }
+    }
+
+    return null;
+  }
+
+  function updateSpecialDay(){
+    var special = getSpecialDay(new Date());
+
+    if(!specialDayBanner){
+      return;
+    }
+
+    if(!special){
+      specialDayBanner.classList.remove("show");
+      return;
+    }
+
+    specialDayIcon.textContent = special.icon;
+    specialDayTitle.textContent = special.title;
+    specialDayText.textContent = special.text;
+    specialDayBanner.classList.add("show");
+  }
+
+  updateSpecialDay();
+  window.setInterval(updateSpecialDay,60000);
+
+  var midnightModal = document.getElementById("midnightModal");
+  var closeMidnightButton = document.getElementById("closeMidnightButton");
+
+  function closeMidnight(){
+    if(!midnightModal){
+      return;
+    }
+
+    midnightModal.classList.remove("open");
+    midnightModal.setAttribute("aria-hidden","true");
+  }
+
+  function maybeOpenMidnight(){
+    if(!midnightModal){
+      return;
+    }
+
+    var now = new Date();
+
+    if(now.getHours() !== 0 || now.getMinutes() !== 0){
+      return;
+    }
+
+    var midnightKey =
+      "midnight-" +
+      now.getFullYear() + "-" +
+      String(now.getMonth() + 1).padStart(2,"0") + "-" +
+      String(now.getDate()).padStart(2,"0");
+
+    if(localStorage.getItem(midnightKey)){
+      return;
+    }
+
+    localStorage.setItem(midnightKey,"1");
+    midnightModal.classList.add("open");
+    midnightModal.setAttribute("aria-hidden","false");
+
+    if(!prefersReducedMotion){
+      createBirthdayConfetti();
+    }
+  }
+
+  maybeOpenMidnight();
+  window.setInterval(maybeOpenMidnight,15000);
+
+  if(closeMidnightButton){
+    closeMidnightButton.addEventListener("click",closeMidnight);
+  }
+
+  if(midnightModal){
+    midnightModal.addEventListener("click",function(event){
+      if(event.target === midnightModal){
+        closeMidnight();
+      }
     });
   }
 
