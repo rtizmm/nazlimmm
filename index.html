@@ -791,6 +791,46 @@ h2{
   background:linear-gradient(145deg,#79b9ff,#27335f);
 }
 
+.theme-btn[data-theme-choice="sunset"]{
+  background:linear-gradient(145deg,#ff9a76,#d95f79);
+}
+
+.theme-btn[data-theme-choice="mint"]{
+  background:linear-gradient(145deg,#78e0c2,#2b8f83);
+}
+
+body[data-theme="sunset"]{
+  --bg-1:#1c0b12;
+  --bg-2:#3a1824;
+  --bg-3:#12070b;
+  --pink:#ff9b82;
+  --pink-2:#ffc0a9;
+  --pink-3:#df6f78;
+  --purple:#f18391;
+  --text:#fff9f6;
+  --muted:#f1c5bb;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(255,145,111,.22) 0,transparent 30%),
+    radial-gradient(circle at 84% 78%,rgba(218,80,113,.18) 0,transparent 31%),
+    linear-gradient(145deg,#1c0b12,#3a1824 48%,#12070b);
+}
+
+body[data-theme="mint"]{
+  --bg-1:#071614;
+  --bg-2:#10312c;
+  --bg-3:#06100f;
+  --pink:#7be0c4;
+  --pink-2:#acebd9;
+  --pink-3:#49ad9b;
+  --purple:#72c9c7;
+  --text:#f4fffb;
+  --muted:#b9ded3;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(78,206,174,.19) 0,transparent 30%),
+    radial-gradient(circle at 84% 78%,rgba(72,156,167,.17) 0,transparent 31%),
+    linear-gradient(145deg,#071614,#10312c 48%,#06100f);
+}
+
 body[data-theme="purple"]{
   --bg-1:#100b20;
   --bg-2:#251644;
@@ -841,6 +881,34 @@ body[data-theme="night"] .hero-heart,
 body[data-theme="night"] .secret-heart,
 body[data-theme="night"] .secret-icon{
   color:#9bcdff;
+}
+
+body[data-theme="sunset"] h1,
+body[data-theme="sunset"] h2,
+body[data-theme="sunset"] .time-value,
+body[data-theme="sunset"] .countdown-unit strong,
+body[data-theme="sunset"] .hero-heart,
+body[data-theme="sunset"] .secret-heart,
+body[data-theme="sunset"] .secret-icon{
+  color:#ffab8f;
+}
+
+body[data-theme="mint"] h1,
+body[data-theme="mint"] h2,
+body[data-theme="mint"] .time-value,
+body[data-theme="mint"] .countdown-unit strong,
+body[data-theme="mint"] .hero-heart,
+body[data-theme="mint"] .secret-heart,
+body[data-theme="mint"] .secret-icon{
+  color:#8be5cf;
+}
+
+body[data-theme="sunset"] .soft-button{
+  background:linear-gradient(135deg,#e87972,#bd536e);
+}
+
+body[data-theme="mint"] .soft-button{
+  background:linear-gradient(135deg,#42bfa3,#357d81);
 }
 
 body[data-theme="purple"] .soft-button{
@@ -975,8 +1043,12 @@ body.birthday-mode .hero-badge{
   }
 
   .theme-btn{
-    width:28px;
-    height:28px;
+    width:26px;
+    height:26px;
+  }
+
+  .theme-picker{
+    gap:4px;
   }
 }
 
@@ -1228,6 +1300,24 @@ footer{
     margin:17px auto;
     padding:24px 17px;
     border-radius:24px;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    box-shadow:0 12px 34px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.06);
+  }
+
+  .intro-card,
+  .hero-badge,
+  .theme-picker{
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+
+  #particles{
+    display:none;
+  }
+
+  #floating-hearts span:nth-child(n+4){
+    display:none;
   }
 
   .timer-grid,
@@ -1361,6 +1451,8 @@ footer{
   <button class="theme-btn" data-theme-choice="pink" type="button" aria-label="Pembe tema" title="Pembe"></button>
   <button class="theme-btn" data-theme-choice="purple" type="button" aria-label="Mor tema" title="Mor"></button>
   <button class="theme-btn" data-theme-choice="night" type="button" aria-label="Gece tema" title="Gece"></button>
+  <button class="theme-btn" data-theme-choice="sunset" type="button" aria-label="Sunset tema" title="Sunset"></button>
+  <button class="theme-btn" data-theme-choice="mint" type="button" aria-label="Mint tema" title="Mint"></button>
 </div>
 
 <header class="reveal">
@@ -1599,11 +1691,13 @@ footer{
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var isSmallScreen = window.matchMedia("(max-width: 700px)").matches;
+  var isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  var lowPowerMode = isSmallScreen || isCoarsePointer;
 
 
   var themeButtons = document.querySelectorAll(".theme-btn");
   var savedTheme = localStorage.getItem("nazli-theme") || "pink";
-  var allowedThemes = ["pink","purple","night"];
+  var allowedThemes = ["pink","purple","night","sunset","mint"];
 
   function applyTheme(theme){
     if(allowedThemes.indexOf(theme) === -1){
@@ -1632,7 +1726,7 @@ footer{
     }
 
     var pieces = ["♡","✦","★","🎉"];
-    var count = isSmallScreen ? 18 : 30;
+    var count = lowPowerMode ? 10 : 30;
 
     for(var i = 0; i < count; i++){
       var piece = document.createElement("div");
@@ -2076,7 +2170,7 @@ footer{
       return;
     }
 
-    var count = isSmallScreen ? 42 : 78;
+    var count = lowPowerMode ? 24 : 78;
 
     for(var i = 0; i < count; i++){
       var star = document.createElement("span");
@@ -2099,7 +2193,7 @@ footer{
       return;
     }
 
-    var count = isSmallScreen ? 12 : 24;
+    var count = lowPowerMode ? 4 : 24;
 
     for(var i = 0; i < count; i++){
       var particle = document.createElement("span");
@@ -2123,7 +2217,7 @@ footer{
   var parallaxFrame = null;
 
   function setParallax(clientX,clientY){
-    if(prefersReducedMotion){
+    if(prefersReducedMotion || lowPowerMode){
       return;
     }
 
@@ -2139,14 +2233,16 @@ footer{
     });
   }
 
-  window.addEventListener("pointermove",function(event){
-    setParallax(event.clientX,event.clientY);
-  },{passive:true});
+  if(!lowPowerMode){
+    window.addEventListener("pointermove",function(event){
+      setParallax(event.clientX,event.clientY);
+    },{passive:true});
+  }
 
   var lastTrail = 0;
 
   function spawnTrailHeart(x,y){
-    if(prefersReducedMotion){
+    if(prefersReducedMotion || lowPowerMode){
       return;
     }
 
@@ -2171,9 +2267,11 @@ footer{
     },1000);
   }
 
-  window.addEventListener("pointermove",function(event){
-    spawnTrailHeart(event.clientX,event.clientY);
-  },{passive:true});
+  if(!lowPowerMode){
+    window.addEventListener("pointermove",function(event){
+      spawnTrailHeart(event.clientX,event.clientY);
+    },{passive:true});
+  }
 
   document.addEventListener("click",function(event){
     if(prefersReducedMotion){
@@ -2183,7 +2281,7 @@ footer{
     var heart = document.createElement("div");
     heart.className = "click-heart";
 
-    var hearts = ["♡","♥","💗","💕"];
+    var hearts = lowPowerMode ? ["♡","♥"] : ["♡","♥","💗","💕"];
     heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
     heart.style.left = event.clientX + "px";
     heart.style.top = event.clientY + "px";
