@@ -1180,6 +1180,343 @@ body[data-theme="mint"] .click-heart{color:#88e4cb}
   }
 }
 
+
+/* Tema 3.0 showcase */
+.theme-picker{
+  max-width:252px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  border-radius:24px;
+}
+
+.theme-btn[data-theme-choice="cyber"]{
+  background:linear-gradient(135deg,#00f5ff 0 48%,#ff28d7 52% 100%);
+}
+.theme-btn[data-theme-choice="aurora"]{
+  background:linear-gradient(135deg,#78ffd6,#7b78ff 52%,#d067ff);
+}
+.theme-btn[data-theme-choice="ocean"]{
+  background:linear-gradient(145deg,#52c8ff,#1165b8 55%,#071c47);
+}
+.theme-btn[data-theme-choice="ember"]{
+  background:linear-gradient(145deg,#ffb34f,#e44b25 55%,#661313);
+}
+.theme-btn[data-theme-choice="rose"]{
+  background:linear-gradient(145deg,#ffd1c7,#d98f91 55%,#8b4c63);
+}
+.theme-btn[data-theme-choice="mono"]{
+  background:linear-gradient(145deg,#f2f2f2,#777 52%,#111);
+}
+
+/* Additional backgrounds */
+body[data-theme="cyber"]{
+  --bg-1:#050510;
+  --bg-2:#111027;
+  --bg-3:#030307;
+  --pink:#20f6ff;
+  --pink-2:#83fbff;
+  --pink-3:#ff39dd;
+  --purple:#ff39dd;
+  --text:#f7feff;
+  --muted:#abdfe2;
+  --theme-glow-1:#00efff;
+  --theme-glow-2:#ff24cf;
+  --theme-symbol:#61fbff;
+  --theme-card-tint:rgba(0,238,255,.075);
+  --theme-line:rgba(51,245,255,.27);
+  background:
+    radial-gradient(circle at 20% 12%,rgba(0,238,255,.18),transparent 31%),
+    radial-gradient(circle at 82% 76%,rgba(255,33,207,.17),transparent 33%),
+    linear-gradient(145deg,#050510,#111027 48%,#030307);
+}
+
+body[data-theme="aurora"]{
+  --bg-1:#07131a;
+  --bg-2:#152447;
+  --bg-3:#090d19;
+  --pink:#8affdb;
+  --pink-2:#c6ffef;
+  --pink-3:#9b86ff;
+  --purple:#d97bff;
+  --text:#f8fffd;
+  --muted:#c4dedf;
+  --theme-glow-1:#61ffd2;
+  --theme-glow-2:#b16fff;
+  --theme-symbol:#bdfff0;
+  --theme-card-tint:rgba(101,255,212,.065);
+  --theme-line:rgba(154,233,224,.20);
+  background:
+    radial-gradient(circle at 16% 16%,rgba(74,255,205,.16),transparent 32%),
+    radial-gradient(circle at 78% 18%,rgba(123,96,255,.15),transparent 34%),
+    radial-gradient(circle at 58% 84%,rgba(218,90,255,.12),transparent 30%),
+    linear-gradient(145deg,#07131a,#152447 48%,#090d19);
+}
+
+body[data-theme="ocean"]{
+  --bg-1:#03111f;
+  --bg-2:#082d4e;
+  --bg-3:#020812;
+  --pink:#5bc9ff;
+  --pink-2:#a6e5ff;
+  --pink-3:#2d88d4;
+  --purple:#4f91ff;
+  --text:#f3fbff;
+  --muted:#b7d8e8;
+  --theme-glow-1:#35c4ff;
+  --theme-glow-2:#235fff;
+  --theme-symbol:#8bdcff;
+  --theme-card-tint:rgba(60,186,255,.07);
+  --theme-line:rgba(99,199,255,.19);
+  background:
+    radial-gradient(ellipse at 50% -10%,rgba(65,187,255,.21),transparent 38%),
+    radial-gradient(circle at 84% 78%,rgba(38,99,255,.14),transparent 31%),
+    linear-gradient(180deg,#041322,#082d4e 48%,#020812);
+}
+
+body[data-theme="ember"]{
+  --bg-1:#140704;
+  --bg-2:#35100a;
+  --bg-3:#080302;
+  --pink:#ff9b4b;
+  --pink-2:#ffc17e;
+  --pink-3:#e94d2b;
+  --purple:#ff5a32;
+  --text:#fff9f3;
+  --muted:#e9c2ac;
+  --theme-glow-1:#ff7a25;
+  --theme-glow-2:#d7271c;
+  --theme-symbol:#ffb56d;
+  --theme-card-tint:rgba(255,100,36,.075);
+  --theme-line:rgba(255,139,72,.21);
+  background:
+    radial-gradient(circle at 18% 15%,rgba(255,120,37,.21),transparent 31%),
+    radial-gradient(circle at 82% 77%,rgba(211,38,25,.17),transparent 32%),
+    linear-gradient(145deg,#140704,#35100a 48%,#080302);
+}
+
+body[data-theme="rose"]{
+  --bg-1:#1a0f13;
+  --bg-2:#382128;
+  --bg-3:#10090c;
+  --pink:#e6a3a0;
+  --pink-2:#ffd0c5;
+  --pink-3:#c47c84;
+  --purple:#bd8294;
+  --text:#fffaf8;
+  --muted:#e8c7c5;
+  --theme-glow-1:#f3b5a7;
+  --theme-glow-2:#bd7087;
+  --theme-symbol:#ffd0c5;
+  --theme-card-tint:rgba(236,170,156,.07);
+  --theme-line:rgba(239,184,173,.19);
+  background:
+    radial-gradient(circle at 18% 12%,rgba(235,166,151,.18),transparent 30%),
+    radial-gradient(circle at 84% 78%,rgba(176,105,130,.15),transparent 31%),
+    linear-gradient(145deg,#1a0f13,#382128 48%,#10090c);
+}
+
+body[data-theme="mono"]{
+  --bg-1:#080808;
+  --bg-2:#171717;
+  --bg-3:#030303;
+  --pink:#f0f0f0;
+  --pink-2:#ffffff;
+  --pink-3:#b6b6b6;
+  --purple:#d4d4d4;
+  --text:#fafafa;
+  --muted:#c8c8c8;
+  --theme-glow-1:#ffffff;
+  --theme-glow-2:#777777;
+  --theme-symbol:#f0f0f0;
+  --theme-card-tint:rgba(255,255,255,.045);
+  --theme-line:rgba(255,255,255,.16);
+  background:
+    radial-gradient(circle at 18% 12%,rgba(255,255,255,.07),transparent 30%),
+    radial-gradient(circle at 84% 78%,rgba(255,255,255,.035),transparent 31%),
+    linear-gradient(145deg,#080808,#171717 48%,#030303);
+}
+
+/* Theme-specific typography accents */
+body[data-theme="cyber"] h1,
+body[data-theme="cyber"] h2,
+body[data-theme="cyber"] .time-value,
+body[data-theme="cyber"] .countdown-unit strong{
+  color:#6ffaff;
+  text-shadow:2px 0 0 rgba(255,33,207,.42),-2px 0 0 rgba(0,238,255,.2),0 0 22px rgba(0,238,255,.32);
+}
+
+body[data-theme="aurora"] h1,
+body[data-theme="aurora"] h2,
+body[data-theme="aurora"] .time-value,
+body[data-theme="aurora"] .countdown-unit strong{color:#a7ffe5}
+
+body[data-theme="ocean"] h1,
+body[data-theme="ocean"] h2,
+body[data-theme="ocean"] .time-value,
+body[data-theme="ocean"] .countdown-unit strong{color:#7bd7ff}
+
+body[data-theme="ember"] h1,
+body[data-theme="ember"] h2,
+body[data-theme="ember"] .time-value,
+body[data-theme="ember"] .countdown-unit strong{color:#ffad62}
+
+body[data-theme="rose"] h1,
+body[data-theme="rose"] h2,
+body[data-theme="rose"] .time-value,
+body[data-theme="rose"] .countdown-unit strong{color:#f2b6ad}
+
+body[data-theme="mono"] h1,
+body[data-theme="mono"] h2,
+body[data-theme="mono"] .time-value,
+body[data-theme="mono"] .countdown-unit strong{color:#f4f4f4;text-shadow:0 0 20px rgba(255,255,255,.14)}
+
+body[data-theme="cyber"] .soft-button{background:linear-gradient(135deg,#00b9cc,#d921bd)}
+body[data-theme="aurora"] .soft-button{background:linear-gradient(135deg,#45cda7,#8068da)}
+body[data-theme="ocean"] .soft-button{background:linear-gradient(135deg,#168fc8,#2857bb)}
+body[data-theme="ember"] .soft-button{background:linear-gradient(135deg,#e97628,#b82e1f)}
+body[data-theme="rose"] .soft-button{background:linear-gradient(135deg,#cf8d8e,#9c6278)}
+body[data-theme="mono"] .soft-button{background:linear-gradient(135deg,#eeeeee,#777);color:#111}
+
+/* Theme-specific card silhouettes */
+body[data-theme="cyber"] section,
+body[data-theme="cyber"] .time-box,
+body[data-theme="cyber"] .reason-card{
+  border-radius:8px;
+  border-color:rgba(63,241,255,.24);
+  box-shadow:0 0 0 1px rgba(255,43,214,.05),0 18px 55px rgba(0,0,0,.42);
+}
+
+body[data-theme="aurora"] section{border-radius:42px 18px 42px 18px}
+body[data-theme="aurora"] .time-box{border-radius:28px 12px}
+body[data-theme="ocean"] section{border-radius:28px 28px 44px 44px}
+body[data-theme="ocean"] .time-box{border-radius:24px}
+body[data-theme="ember"] section{border-radius:10px 34px 10px 34px}
+body[data-theme="ember"] .reason-card{border-radius:8px 24px}
+body[data-theme="rose"] section{border-radius:38px}
+body[data-theme="rose"] .reason-card{border-radius:24px 24px 10px 24px}
+body[data-theme="mono"] section,
+body[data-theme="mono"] .time-box,
+body[data-theme="mono"] .reason-card{border-radius:6px}
+
+/* PC-only ambient layers */
+@media (min-width:701px){
+  .theme-atmosphere::before,
+  .theme-atmosphere::after{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .5s ease;
+  }
+
+  body[data-theme="cyber"] .theme-atmosphere::before{
+    opacity:.28;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(0,238,255,.11) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,39,216,.08) 1px,transparent 1px);
+    background-size:42px 42px;
+    animation:cyberGrid 12s linear infinite;
+  }
+
+  body[data-theme="cyber"] .theme-atmosphere::after{
+    opacity:.14;
+    inset:0;
+    background:repeating-linear-gradient(180deg,transparent 0 5px,rgba(255,255,255,.08) 6px,transparent 7px);
+    animation:scanMove 7s linear infinite;
+  }
+
+  body[data-theme="aurora"] .theme-atmosphere::before{
+    opacity:.34;
+    filter:blur(48px);
+    background:
+      linear-gradient(110deg,transparent 15%,rgba(78,255,207,.34) 35%,rgba(108,92,255,.30) 55%,rgba(220,85,255,.28) 72%,transparent 88%);
+    animation:auroraDrift 11s ease-in-out infinite alternate;
+  }
+
+  body[data-theme="ocean"] .theme-atmosphere::before{
+    opacity:.23;
+    inset:30% -20% -20%;
+    background:
+      repeating-radial-gradient(ellipse at 50% 100%,rgba(85,198,255,.18) 0 2px,transparent 3px 34px);
+    animation:oceanDrift 13s ease-in-out infinite alternate;
+  }
+
+  body[data-theme="ember"] .theme-atmosphere::before{
+    opacity:.24;
+    filter:blur(30px);
+    background:
+      radial-gradient(circle at 20% 90%,rgba(255,95,20,.4),transparent 23%),
+      radial-gradient(circle at 80% 82%,rgba(196,23,15,.36),transparent 20%);
+    animation:emberPulse 6s ease-in-out infinite alternate;
+  }
+
+  body[data-theme="rose"] .theme-atmosphere::before{
+    opacity:.20;
+    filter:blur(28px);
+    background:
+      radial-gradient(circle at 28% 24%,rgba(255,200,183,.30),transparent 22%),
+      radial-gradient(circle at 72% 65%,rgba(191,111,139,.25),transparent 26%);
+    animation:roseFloat 12s ease-in-out infinite alternate;
+  }
+
+  body[data-theme="mono"] .theme-atmosphere::before{
+    opacity:.10;
+    inset:0;
+    background:repeating-linear-gradient(135deg,rgba(255,255,255,.12) 0 1px,transparent 1px 26px);
+  }
+}
+
+@keyframes cyberGrid{
+  to{background-position:42px 42px,42px 42px}
+}
+@keyframes scanMove{
+  from{background-position:0 -100px}
+  to{background-position:0 100px}
+}
+@keyframes auroraDrift{
+  from{transform:translate3d(-8%,-4%,0) rotate(-4deg) scale(1.05)}
+  to{transform:translate3d(7%,5%,0) rotate(5deg) scale(1.15)}
+}
+@keyframes oceanDrift{
+  from{transform:translateY(0) scaleX(1)}
+  to{transform:translateY(-24px) scaleX(1.08)}
+}
+@keyframes emberPulse{
+  from{transform:scale(.95);opacity:.18}
+  to{transform:scale(1.08);opacity:.32}
+}
+@keyframes roseFloat{
+  from{transform:translate3d(-2%,-2%,0)}
+  to{transform:translate3d(3%,3%,0)}
+}
+
+/* Intro for new themes */
+body[data-theme="cyber"] #intro{background:radial-gradient(circle at 50% 35%,rgba(0,238,255,.18),transparent 35%),linear-gradient(145deg,#03040a,#111027 52%,#020205)}
+body[data-theme="aurora"] #intro{background:radial-gradient(circle at 50% 35%,rgba(99,255,214,.18),transparent 35%),linear-gradient(145deg,#061117,#152447 52%,#080b16)}
+body[data-theme="ocean"] #intro{background:radial-gradient(circle at 50% 35%,rgba(71,188,255,.19),transparent 35%),linear-gradient(145deg,#03101d,#082d4e 52%,#020711)}
+body[data-theme="ember"] #intro{background:radial-gradient(circle at 50% 35%,rgba(255,117,31,.20),transparent 35%),linear-gradient(145deg,#110502,#35100a 52%,#070201)}
+body[data-theme="rose"] #intro{background:radial-gradient(circle at 50% 35%,rgba(239,176,160,.19),transparent 35%),linear-gradient(145deg,#170d11,#382128 52%,#0d0709)}
+body[data-theme="mono"] #intro{background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.08),transparent 35%),linear-gradient(145deg,#050505,#171717 52%,#020202)}
+
+body[data-theme="cyber"] .star,body[data-theme="cyber"] .particle{background:#56faff}
+body[data-theme="aurora"] .star,body[data-theme="aurora"] .particle{background:#b1ffe9}
+body[data-theme="ocean"] .star,body[data-theme="ocean"] .particle{background:#85d9ff}
+body[data-theme="ember"] .star,body[data-theme="ember"] .particle{background:#ffae65}
+body[data-theme="rose"] .star,body[data-theme="rose"] .particle{background:#ffd0c6}
+body[data-theme="mono"] .star,body[data-theme="mono"] .particle{background:#e8e8e8}
+
+@media (max-width:700px){
+  .theme-picker{
+    max-width:190px;
+    max-height:78px;
+    overflow:auto;
+    scrollbar-width:none;
+  }
+  .theme-picker::-webkit-scrollbar{display:none}
+}
+
 /* 12 Aralık doğum günü modu */
 #birthdaySpecial{
   display:none;
@@ -1721,6 +2058,12 @@ footer{
   <button class="theme-btn" data-theme-choice="night" type="button" aria-label="Gece tema" title="Gece"></button>
   <button class="theme-btn" data-theme-choice="sunset" type="button" aria-label="Sunset tema" title="Sunset"></button>
   <button class="theme-btn" data-theme-choice="mint" type="button" aria-label="Mint tema" title="Mint"></button>
+  <button class="theme-btn" data-theme-choice="cyber" type="button" aria-label="Cyber tema" title="Cyber"></button>
+  <button class="theme-btn" data-theme-choice="aurora" type="button" aria-label="Aurora tema" title="Aurora"></button>
+  <button class="theme-btn" data-theme-choice="ocean" type="button" aria-label="Ocean tema" title="Ocean"></button>
+  <button class="theme-btn" data-theme-choice="ember" type="button" aria-label="Ember tema" title="Ember"></button>
+  <button class="theme-btn" data-theme-choice="rose" type="button" aria-label="Rose Gold tema" title="Rose Gold"></button>
+  <button class="theme-btn" data-theme-choice="mono" type="button" aria-label="Mono tema" title="Mono"></button>
 </div>
 
 <header class="reveal">
@@ -1972,7 +2315,13 @@ footer{
     purple:["✦","◇","♡","✧"],
     night:["✦","★","☾","·"],
     sunset:["✦","♡","☼","·"],
-    mint:["✦","◇","♡","·"]
+    mint:["✦","◇","♡","·"],
+    cyber:["⌁","✦","◇","×","+"],
+    aurora:["✦","◇","♡","·","✧"],
+    ocean:["≈","✦","·","◇"],
+    ember:["✦","·","▲","◆"],
+    rose:["♡","✦","◇","·"],
+    mono:["·","×","+","□"]
   };
 
   function renderThemeDecor(theme){
@@ -1983,7 +2332,11 @@ footer{
     themeSymbols.innerHTML = "";
 
     var symbols = themeDecor[theme] || themeDecor.pink;
-    var count = lowPowerMode ? 5 : 12;
+    var desktopDecorCounts = {
+      pink:14,purple:16,night:20,sunset:16,mint:16,
+      cyber:28,aurora:24,ocean:22,ember:26,rose:18,mono:14
+    };
+    var count = lowPowerMode ? 5 : (desktopDecorCounts[theme] || 14);
 
     for(var i = 0; i < count; i++){
       var item = document.createElement("span");
@@ -2000,7 +2353,7 @@ footer{
 
   var themeButtons = document.querySelectorAll(".theme-btn");
   var savedTheme = localStorage.getItem("nazli-theme") || "pink";
-  var allowedThemes = ["pink","purple","night","sunset","mint"];
+  var allowedThemes = ["pink","purple","night","sunset","mint","cyber","aurora","ocean","ember","rose","mono"];
 
   function applyTheme(theme){
     if(allowedThemes.indexOf(theme) === -1){
@@ -2016,7 +2369,13 @@ footer{
       purple:"#160d2d",
       night:"#081426",
       sunset:"#2a1018",
-      mint:"#09231f"
+      mint:"#09231f",
+      cyber:"#050510",
+      aurora:"#0c1828",
+      ocean:"#061b2f",
+      ember:"#200a05",
+      rose:"#241419",
+      mono:"#0b0b0b"
     };
 
     var themeColorMeta = document.querySelector('meta[name="theme-color"]');
