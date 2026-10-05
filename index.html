@@ -741,6 +741,342 @@ h2{
 }
 
 
+
+/* Kapsüller + timeline + mini oyun + gece bölümü */
+.timeline{
+  position:relative;
+  width:min(610px,100%);
+  margin:24px auto 0;
+  text-align:left;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:10px;
+  bottom:12px;
+  width:2px;
+  background:linear-gradient(var(--pink),rgba(255,255,255,.08));
+  opacity:.55;
+}
+
+.timeline-item{
+  position:relative;
+  padding:0 0 25px 52px;
+}
+
+.timeline-item:last-child{
+  padding-bottom:0;
+}
+
+.timeline-dot{
+  position:absolute;
+  left:8px;
+  top:3px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  border:4px solid rgba(255,255,255,.13);
+  background:var(--pink);
+  box-shadow:0 0 20px color-mix(in srgb,var(--pink) 45%,transparent);
+}
+
+.timeline-date{
+  display:block;
+  margin-bottom:5px;
+  color:var(--pink-2);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.timeline-card{
+  padding:16px 18px;
+  border:1px solid var(--theme-line,rgba(255,255,255,.1));
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+}
+
+.timeline-card strong{
+  display:block;
+  margin-bottom:5px;
+  color:var(--pink-2);
+}
+
+.timeline-card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:13px;
+}
+
+.timeline-future .timeline-dot{
+  background:transparent;
+  border:2px dashed var(--pink-2);
+  opacity:.55;
+}
+
+.timeline-future .timeline-card{
+  border-style:dashed;
+  opacity:.72;
+}
+
+.capsule-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.capsule{
+  position:relative;
+  min-height:215px;
+  padding:20px 15px 16px;
+  border:1px solid var(--theme-line,rgba(255,255,255,.1));
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 50% 0%,var(--theme-card-tint,rgba(255,126,179,.06)),transparent 45%),
+    linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow:hidden;
+}
+
+.capsule-icon{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:19px;
+  margin-bottom:12px;
+  background:rgba(255,255,255,.065);
+  border:1px solid rgba(255,255,255,.09);
+  font-size:27px;
+  color:var(--pink-2);
+  box-shadow:0 10px 28px rgba(0,0,0,.14);
+}
+
+.capsule strong{
+  color:var(--pink-2);
+  font-size:14px;
+}
+
+.capsule-status{
+  min-height:36px;
+  margin:7px 0 12px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.55;
+}
+
+.capsule-button{
+  margin-top:auto;
+}
+
+.capsule-button[disabled]{
+  cursor:not-allowed;
+  opacity:.45;
+  filter:saturate(.5);
+  transform:none!important;
+}
+
+.capsule-message{
+  display:grid;
+  grid-template-rows:0fr;
+  width:100%;
+  opacity:0;
+  transition:grid-template-rows .4s ease,opacity .3s ease;
+}
+
+.capsule.open .capsule-message{
+  grid-template-rows:1fr;
+  opacity:1;
+}
+
+.capsule-message-inner{
+  min-height:0;
+  overflow:hidden;
+}
+
+.capsule-message p{
+  margin:14px 0 0;
+  padding-top:13px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:var(--text);
+  font-size:12px;
+  line-height:1.65;
+}
+
+.heart-game-shell{
+  width:min(620px,100%);
+  margin:20px auto 0;
+}
+
+.game-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin-bottom:12px;
+}
+
+.game-stat{
+  padding:10px 8px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.10);
+}
+
+.game-stat strong{
+  display:block;
+  color:var(--pink-2);
+  font-size:20px;
+  font-variant-numeric:tabular-nums;
+}
+
+.game-stat span{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.heart-game-area{
+  position:relative;
+  height:300px;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid var(--theme-line,rgba(255,255,255,.11));
+  background:
+    radial-gradient(circle at 50% 50%,var(--theme-card-tint,rgba(255,126,179,.07)),transparent 55%),
+    rgba(0,0,0,.13);
+  box-shadow:inset 0 0 35px rgba(0,0,0,.13);
+  touch-action:manipulation;
+  user-select:none;
+}
+
+.game-placeholder{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:25px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  pointer-events:none;
+  transition:opacity .2s ease;
+}
+
+.heart-game-area.playing .game-placeholder{
+  opacity:0;
+}
+
+.game-heart{
+  position:absolute;
+  z-index:2;
+  width:58px;
+  height:58px;
+  display:none;
+  place-items:center;
+  padding:0;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  color:white;
+  background:linear-gradient(145deg,var(--pink),var(--purple));
+  box-shadow:0 8px 28px color-mix(in srgb,var(--pink) 35%,transparent);
+  font-size:28px;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:left .12s ease,top .12s ease,transform .08s ease;
+}
+
+.heart-game-area.playing .game-heart{
+  display:grid;
+}
+
+.game-heart:active{
+  transform:scale(.84);
+}
+
+.game-controls{
+  margin-top:14px;
+}
+
+.game-result{
+  min-height:24px;
+  margin:12px 0 0;
+  color:var(--pink-2);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.night-only{
+  display:none;
+}
+
+.night-only.show{
+  display:block;
+}
+
+.night-card{
+  position:relative;
+  overflow:hidden;
+  padding:26px 20px;
+  border-radius:25px;
+  border:1px solid rgba(130,181,255,.14);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(107,116,255,.14),transparent 45%),
+    linear-gradient(145deg,rgba(8,16,38,.76),rgba(19,11,38,.66));
+}
+
+.night-moon{
+  font-size:42px;
+  filter:drop-shadow(0 0 18px rgba(142,197,255,.35));
+}
+
+.night-card strong{
+  display:block;
+  margin:8px 0 7px;
+  color:#bcdcff;
+  font-size:18px;
+}
+
+.night-card p{
+  width:min(500px,95%);
+  margin:0 auto;
+  color:#c8d2e7;
+  line-height:1.75;
+  font-size:13px;
+}
+
+@media (max-width:700px){
+  .capsule-grid{
+    grid-template-columns:1fr;
+  }
+
+  .capsule{
+    min-height:0;
+  }
+
+  .heart-game-area{
+    height:255px;
+  }
+
+  .game-heart{
+    width:54px;
+    height:54px;
+  }
+
+  .timeline{
+    margin-top:18px;
+  }
+}
+
 /* Tema seçimi */
 .theme-picker{
   position:fixed;
@@ -2219,6 +2555,106 @@ footer{
     </div>
   </section>
 
+
+  <section class="reveal" id="ourTimeline">
+    <h2>bizim hikayemiz ♡</h2>
+    <p class="section-sub">buraya zamanla bizim önemli gunlerı eklerız askim</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <span class="timeline-date">20 Eylül 2026</span>
+        <div class="timeline-card">
+          <strong>biz olduk ♡</strong>
+          <p>her seyın basladıgı gun. sımdılık timelineın ilk ve en onemlı noktası burası.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-future">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <span class="timeline-date">devam ediyor...</span>
+        <div class="timeline-card">
+          <strong>sonrakı anımız buraya</strong>
+          <p>yeni bi tarih oldukca burası da bizimle beraber buyuyecek ♡</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal" id="messageCapsules">
+    <h2>mesaj kapsulleri 💌</h2>
+    <p class="section-sub">hepsını aynı anda acma la 😭 hangısı lazımsa onu ac</p>
+
+    <div class="capsule-grid">
+      <article class="capsule" data-capsule="birthday" data-unlock="2026-12-12">
+        <div class="capsule-icon">🔒</div>
+        <strong>12 Aralık'ta aç</strong>
+        <p class="capsule-status">12 Aralık 2026 gelmeden acılmıyo askim</p>
+        <button class="soft-button capsule-button" type="button" disabled>kilitli ♡</button>
+        <div class="capsule-message" aria-hidden="true">
+          <div class="capsule-message-inner">
+            <p>bugun senın gununnn ♡ bu kapsulu de tam bugune saklamıstım. iyiki dogmussun bebegimmm.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="capsule" data-capsule="mood">
+        <div class="capsule-icon">☁️</div>
+        <strong>moralin bozuksa aç</strong>
+        <p class="capsule-status">kotu bı gun gecırıyosan bunun ıcın burda</p>
+        <button class="soft-button capsule-button" type="button">aç ♡</button>
+        <div class="capsule-message" aria-hidden="true">
+          <div class="capsule-message-inner">
+            <p>bugun kotu gecmıs olabılır ama tek bı gun her sey degıl. biraz kafanı dinlendir tamam mı, yarın daha guzel olsun ♡</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="capsule" data-capsule="miss">
+        <div class="capsule-icon">♡</div>
+        <strong>beni özlediysen aç</strong>
+        <p class="capsule-status">bunu acmak ıcın bahaneye gerek yok aslında 😭</p>
+        <button class="soft-button capsule-button" type="button">aç ♡</button>
+        <div class="capsule-message" aria-hidden="true">
+          <div class="capsule-message-inner">
+            <p>buraya geldıysen benı ozlemıssındır dıye dusunuyom 😭 ben de senı ozledım say askimmm ♡</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="reveal" id="heartGameSection">
+    <h2>kalbi yakala ♡</h2>
+    <p class="section-sub">20 saniyen var. kac tane yakalıcan bakalım 😭</p>
+
+    <div class="heart-game-shell">
+      <div class="game-stats">
+        <div class="game-stat"><strong id="gameScore">0</strong><span>skor</span></div>
+        <div class="game-stat"><strong id="gameTime">20</strong><span>saniye</span></div>
+        <div class="game-stat"><strong id="gameBest">0</strong><span>rekor</span></div>
+      </div>
+
+      <div class="heart-game-area" id="heartGameArea">
+        <div class="game-placeholder">baslata basınca kalp kacmaya baslıcak<br>telefonda da dokunarak oynanır ♡</div>
+        <button class="game-heart" id="gameHeart" type="button" aria-label="Kalbi yakala">♡</button>
+      </div>
+
+      <div class="game-controls">
+        <button class="soft-button" id="startHeartGame" type="button">baslat ♡</button>
+      </div>
+      <p class="game-result" id="gameResult" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="reveal night-only" id="nightSection">
+    <div class="night-card">
+      <div class="night-moon">☾</div>
+      <strong>bu saatte napıyon burda 😭</strong>
+      <p>gecenın bu saatınde buraya kadar geldıysen sana ayrı bı not bırakıyım dedım... cok gec olmadan uyu askim, yarın yine gelırsın ♡</p>
+    </div>
+  </section>
+
   <section class="reveal">
     <h2>Bizim playlistimiz 🎵</h2>
     <p class="section-sub">bizim sarkilarimizz♡</p>
@@ -2447,6 +2883,224 @@ footer{
   }
 
 
+
+
+
+  // Mesaj kapsülleri
+  var capsuleElements = document.querySelectorAll(".capsule");
+
+  function localDateStart(year,monthIndex,day){
+    return new Date(year,monthIndex,day,0,0,0,0);
+  }
+
+  function updateCapsuleLocks(){
+    var now = new Date();
+
+    capsuleElements.forEach(function(capsule){
+      var unlock = capsule.getAttribute("data-unlock");
+      var button = capsule.querySelector(".capsule-button");
+      var status = capsule.querySelector(".capsule-status");
+      var icon = capsule.querySelector(".capsule-icon");
+
+      if(!unlock || !button){
+        return;
+      }
+
+      var parts = unlock.split("-").map(Number);
+      var unlockDate = localDateStart(parts[0],parts[1] - 1,parts[2]);
+      var unlocked = now >= unlockDate;
+
+      button.disabled = !unlocked;
+      button.textContent = unlocked ? "aç ♡" : "kilitli ♡";
+
+      if(icon){
+        icon.textContent = unlocked ? "💌" : "🔒";
+      }
+
+      if(status){
+        status.textContent = unlocked
+          ? "tam zamanı gelmıs... artık acabilirsın ♡"
+          : "12 Aralık 2026 gelmeden acılmıyo askim";
+      }
+    });
+  }
+
+  function setCapsuleOpen(capsule,open){
+    var message = capsule.querySelector(".capsule-message");
+    var button = capsule.querySelector(".capsule-button");
+
+    capsule.classList.toggle("open",open);
+
+    if(message){
+      message.setAttribute("aria-hidden",String(!open));
+    }
+
+    if(button && !button.disabled){
+      button.textContent = open ? "kapat 😭" : "aç ♡";
+    }
+
+    var capsuleName = capsule.getAttribute("data-capsule");
+    if(capsuleName){
+      localStorage.setItem("capsule-" + capsuleName,open ? "1" : "0");
+    }
+  }
+
+  capsuleElements.forEach(function(capsule){
+    var button = capsule.querySelector(".capsule-button");
+    var capsuleName = capsule.getAttribute("data-capsule");
+
+    if(capsuleName && localStorage.getItem("capsule-" + capsuleName) === "1"){
+      var unlock = capsule.getAttribute("data-unlock");
+
+      if(!unlock){
+        setCapsuleOpen(capsule,true);
+      }
+    }
+
+    if(button){
+      button.addEventListener("click",function(){
+        if(button.disabled){
+          return;
+        }
+
+        setCapsuleOpen(capsule,!capsule.classList.contains("open"));
+      });
+    }
+  });
+
+  updateCapsuleLocks();
+  window.setInterval(updateCapsuleLocks,60000);
+
+  // 20 saniyelik kalp yakalama oyunu
+  var heartGameArea = document.getElementById("heartGameArea");
+  var gameHeart = document.getElementById("gameHeart");
+  var startHeartGame = document.getElementById("startHeartGame");
+  var gameScoreEl = document.getElementById("gameScore");
+  var gameTimeEl = document.getElementById("gameTime");
+  var gameBestEl = document.getElementById("gameBest");
+  var gameResult = document.getElementById("gameResult");
+  var gameScore = 0;
+  var gameTimeLeft = 20;
+  var gameRunning = false;
+  var gameTimer = null;
+  var heartMover = null;
+  var gameBest = Number(localStorage.getItem("nazli-heart-best") || 0);
+
+  if(gameBestEl){
+    gameBestEl.textContent = gameBest;
+  }
+
+  function moveGameHeart(){
+    if(!heartGameArea || !gameHeart || !gameRunning){
+      return;
+    }
+
+    var padding = 8;
+    var maxX = Math.max(padding,heartGameArea.clientWidth - gameHeart.offsetWidth - padding);
+    var maxY = Math.max(padding,heartGameArea.clientHeight - gameHeart.offsetHeight - padding);
+
+    gameHeart.style.left = (padding + Math.random() * Math.max(0,maxX - padding)) + "px";
+    gameHeart.style.top = (padding + Math.random() * Math.max(0,maxY - padding)) + "px";
+  }
+
+  function finishHeartGame(){
+    gameRunning = false;
+    window.clearInterval(gameTimer);
+    window.clearInterval(heartMover);
+
+    if(heartGameArea){
+      heartGameArea.classList.remove("playing");
+    }
+
+    if(startHeartGame){
+      startHeartGame.disabled = false;
+      startHeartGame.textContent = "tekrar oyna ♡";
+    }
+
+    if(gameScore > gameBest){
+      gameBest = gameScore;
+      localStorage.setItem("nazli-heart-best",String(gameBest));
+
+      if(gameBestEl){
+        gameBestEl.textContent = gameBest;
+      }
+    }
+
+    if(gameResult){
+      if(gameScore >= 22){
+        gameResult.textContent = "LAN " + gameScore + " TANE 😭 kalp bırakmadın ortalıkta aq ♡";
+      }else if(gameScore >= 14){
+        gameResult.textContent = gameScore + " tane yakaladınn baya iyisin askim 😭♡";
+      }else if(gameScore >= 7){
+        gameResult.textContent = gameScore + " tanee fena degıl ama bı tur daha oynanır 😭";
+      }else{
+        gameResult.textContent = gameScore + " tane... kalpler senden kacmıs biraz 😭";
+      }
+    }
+  }
+
+  function beginHeartGame(){
+    if(gameRunning || !heartGameArea || !gameHeart){
+      return;
+    }
+
+    gameScore = 0;
+    gameTimeLeft = 20;
+    gameRunning = true;
+
+    gameScoreEl.textContent = "0";
+    gameTimeEl.textContent = "20";
+    gameResult.textContent = "";
+    heartGameArea.classList.add("playing");
+    startHeartGame.disabled = true;
+    startHeartGame.textContent = "oyun basladı 😭";
+
+    moveGameHeart();
+
+    heartMover = window.setInterval(moveGameHeart,650);
+
+    gameTimer = window.setInterval(function(){
+      gameTimeLeft -= 1;
+      gameTimeEl.textContent = gameTimeLeft;
+
+      if(gameTimeLeft <= 0){
+        finishHeartGame();
+      }
+    },1000);
+  }
+
+  if(startHeartGame){
+    startHeartGame.addEventListener("click",beginHeartGame);
+  }
+
+  if(gameHeart){
+    gameHeart.addEventListener("click",function(event){
+      event.stopPropagation();
+
+      if(!gameRunning){
+        return;
+      }
+
+      gameScore += 1;
+      gameScoreEl.textContent = gameScore;
+      moveGameHeart();
+    });
+  }
+
+  // 00.00 - 05.00 arasında görünen gece bölümü
+  var nightSection = document.getElementById("nightSection");
+
+  function updateNightSection(){
+    if(!nightSection){
+      return;
+    }
+
+    var hour = new Date().getHours();
+    nightSection.classList.toggle("show",hour >= 0 && hour < 5);
+  }
+
+  updateNightSection();
+  window.setInterval(updateNightSection,60000);
 
   var timeMessage = document.getElementById("timeMessage");
   var specialDayBanner = document.getElementById("specialDayBanner");
