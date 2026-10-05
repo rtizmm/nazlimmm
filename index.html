@@ -919,6 +919,267 @@ body[data-theme="night"] .soft-button{
   background:linear-gradient(135deg,#629fe8,#5f68c9);
 }
 
+
+/* Tema 2.0: renk + atmosfer + kart karakteri */
+.theme-atmosphere{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.theme-orb{
+  position:absolute;
+  border-radius:50%;
+  opacity:.18;
+  filter:blur(2px);
+  transition:background .45s ease,opacity .45s ease,transform .45s ease;
+}
+
+.theme-orb.one{
+  width:310px;
+  height:310px;
+  left:-100px;
+  top:16%;
+  background:radial-gradient(circle,var(--theme-glow-1,#ff6fa9),transparent 68%);
+  animation:orbFloatOne 13s ease-in-out infinite;
+}
+
+.theme-orb.two{
+  width:390px;
+  height:390px;
+  right:-145px;
+  top:54%;
+  background:radial-gradient(circle,var(--theme-glow-2,#a86cff),transparent 68%);
+  animation:orbFloatTwo 16s ease-in-out infinite;
+}
+
+.theme-symbols{
+  position:absolute;
+  inset:0;
+}
+
+.theme-symbol{
+  position:absolute;
+  color:var(--theme-symbol,#ff9bc2);
+  opacity:.12;
+  font-size:var(--symbol-size,20px);
+  animation:themeSymbolFloat var(--symbol-dur,13s) ease-in-out infinite;
+  animation-delay:var(--symbol-delay,0s);
+  text-shadow:0 0 15px currentColor;
+}
+
+@keyframes orbFloatOne{
+  50%{transform:translate3d(40px,-25px,0) scale(1.08)}
+}
+
+@keyframes orbFloatTwo{
+  50%{transform:translate3d(-35px,30px,0) scale(.94)}
+}
+
+@keyframes themeSymbolFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(-8deg)}
+  50%{transform:translate3d(0,-22px,0) rotate(8deg)}
+}
+
+body{
+  --theme-glow-1:#ff6fa9;
+  --theme-glow-2:#a86cff;
+  --theme-symbol:#ff9bc2;
+  --theme-card-tint:rgba(255,126,179,.055);
+  --theme-line:rgba(255,143,186,.18);
+}
+
+section,
+.time-box,
+.countdown-card,
+.surprise-card,
+.reason-card,
+.end-surprise-box{
+  transition:
+    background .45s ease,
+    border-color .45s ease,
+    box-shadow .45s ease,
+    color .45s ease;
+}
+
+section{
+  background:
+    radial-gradient(circle at 100% 0%,var(--theme-card-tint),transparent 32%),
+    linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.045));
+}
+
+section::before{
+  background:radial-gradient(circle,var(--theme-card-tint),transparent 68%);
+}
+
+.time-box,
+.reason-card{
+  border-color:var(--theme-line);
+}
+
+body[data-theme="purple"]{
+  --theme-glow-1:#9c62ff;
+  --theme-glow-2:#604bff;
+  --theme-symbol:#c49cff;
+  --theme-card-tint:rgba(159,103,255,.075);
+  --theme-line:rgba(185,133,255,.19);
+}
+
+body[data-theme="night"]{
+  --theme-glow-1:#3e8cff;
+  --theme-glow-2:#6673ff;
+  --theme-symbol:#9dceff;
+  --theme-card-tint:rgba(82,151,255,.065);
+  --theme-line:rgba(118,181,255,.18);
+}
+
+body[data-theme="sunset"]{
+  --theme-glow-1:#ff8b66;
+  --theme-glow-2:#e75078;
+  --theme-symbol:#ffc0a3;
+  --theme-card-tint:rgba(255,132,100,.075);
+  --theme-line:rgba(255,163,133,.19);
+}
+
+body[data-theme="mint"]{
+  --theme-glow-1:#43d6af;
+  --theme-glow-2:#3995a1;
+  --theme-symbol:#92ead2;
+  --theme-card-tint:rgba(75,211,177,.07);
+  --theme-line:rgba(105,222,193,.18);
+}
+
+/* Temaya özel kart ve dekor karakteri */
+body[data-theme="pink"] .reason-card,
+body:not([data-theme]) .reason-card{
+  border-radius:22px 22px 22px 10px;
+}
+
+body[data-theme="purple"] section{
+  border-radius:32px 18px 32px 18px;
+}
+
+body[data-theme="purple"] .time-box,
+body[data-theme="purple"] .reason-card{
+  border-radius:14px 24px;
+}
+
+body[data-theme="night"] section{
+  border-color:rgba(130,181,255,.13);
+  box-shadow:0 18px 55px rgba(0,4,18,.38),inset 0 1px 0 rgba(175,211,255,.07);
+}
+
+body[data-theme="night"] .time-box,
+body[data-theme="night"] .countdown-unit{
+  background:linear-gradient(180deg,rgba(90,145,230,.09),rgba(8,17,38,.15));
+}
+
+body[data-theme="sunset"] section{
+  border-radius:34px;
+  box-shadow:0 18px 55px rgba(32,5,10,.34),inset 0 1px 0 rgba(255,218,196,.07);
+}
+
+body[data-theme="sunset"] .time-box,
+body[data-theme="sunset"] .reason-card{
+  background:linear-gradient(160deg,rgba(255,165,127,.10),rgba(126,36,59,.055));
+}
+
+body[data-theme="mint"] section{
+  border-radius:18px 34px;
+  box-shadow:0 18px 55px rgba(0,18,16,.36),inset 0 1px 0 rgba(179,255,236,.06);
+}
+
+body[data-theme="mint"] .time-box,
+body[data-theme="mint"] .reason-card{
+  background:linear-gradient(160deg,rgba(90,222,190,.09),rgba(15,75,72,.055));
+}
+
+/* Intro da seçilen temaya uysun */
+body[data-theme="purple"] #intro{
+  background:radial-gradient(circle at 50% 35%,rgba(157,92,255,.24),transparent 35%),linear-gradient(145deg,#0e091b,#251644 52%,#0b0713);
+}
+
+body[data-theme="night"] #intro{
+  background:radial-gradient(circle at 50% 35%,rgba(83,156,255,.20),transparent 35%),linear-gradient(145deg,#050b14,#101d38 52%,#040810);
+}
+
+body[data-theme="sunset"] #intro{
+  background:radial-gradient(circle at 50% 35%,rgba(255,145,111,.22),transparent 35%),linear-gradient(145deg,#18080e,#391722 52%,#100609);
+}
+
+body[data-theme="mint"] #intro{
+  background:radial-gradient(circle at 50% 35%,rgba(78,206,174,.20),transparent 35%),linear-gradient(145deg,#06110f,#10312c 52%,#050c0b);
+}
+
+body[data-theme="purple"] .intro-heart{color:#c49cff;box-shadow:0 0 35px rgba(157,92,255,.25)}
+body[data-theme="night"] .intro-heart{color:#9dceff;box-shadow:0 0 35px rgba(83,156,255,.23)}
+body[data-theme="sunset"] .intro-heart{color:#ffb093;box-shadow:0 0 35px rgba(255,128,94,.23)}
+body[data-theme="mint"] .intro-heart{color:#91e8d0;box-shadow:0 0 35px rgba(69,207,173,.22)}
+
+body[data-theme="purple"] .intro-line::after{background:linear-gradient(90deg,#a869ff,#7255ee)}
+body[data-theme="night"] .intro-line::after{background:linear-gradient(90deg,#67adff,#6f79ff)}
+body[data-theme="sunset"] .intro-line::after{background:linear-gradient(90deg,#ff9c76,#d95678)}
+body[data-theme="mint"] .intro-line::after{background:linear-gradient(90deg,#62dbb9,#3d9da1)}
+
+/* Arka plandaki yıldız/partiküller de temaya uysun */
+body[data-theme="purple"] .star,
+body[data-theme="purple"] .particle{background:#c8a4ff}
+
+body[data-theme="night"] .star,
+body[data-theme="night"] .particle{background:#b7d9ff}
+
+body[data-theme="sunset"] .star,
+body[data-theme="sunset"] .particle{background:#ffc0a4}
+
+body[data-theme="mint"] .star,
+body[data-theme="mint"] .particle{background:#a4eedb}
+
+body[data-theme="purple"] .trail-heart,
+body[data-theme="purple"] .click-heart{color:#c39aff}
+
+body[data-theme="night"] .trail-heart,
+body[data-theme="night"] .click-heart{color:#9dccff}
+
+body[data-theme="sunset"] .trail-heart,
+body[data-theme="sunset"] .click-heart{color:#ffab8e}
+
+body[data-theme="mint"] .trail-heart,
+body[data-theme="mint"] .click-heart{color:#88e4cb}
+
+@media (max-width:700px){
+  .theme-orb{
+    opacity:.11;
+    filter:none;
+  }
+
+  .theme-orb.one{
+    width:220px;
+    height:220px;
+  }
+
+  .theme-orb.two{
+    width:260px;
+    height:260px;
+  }
+
+  .theme-symbol:nth-child(n+6){
+    display:none;
+  }
+
+  .theme-symbol{
+    animation-duration:18s;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .theme-orb,
+  .theme-symbol{
+    animation:none!important;
+  }
+}
+
 /* 12 Aralık doğum günü modu */
 #birthdaySpecial{
   display:none;
@@ -1434,6 +1695,13 @@ footer{
   </div>
 </div>
 
+
+<div class="theme-atmosphere" aria-hidden="true">
+  <div class="theme-orb one"></div>
+  <div class="theme-orb two"></div>
+  <div class="theme-symbols" id="themeSymbols"></div>
+</div>
+
 <div id="starfield" aria-hidden="true"></div>
 <div id="particles" aria-hidden="true"></div>
 
@@ -1695,6 +1963,41 @@ footer{
   var lowPowerMode = isSmallScreen || isCoarsePointer;
 
 
+
+
+  var themeSymbols = document.getElementById("themeSymbols");
+
+  var themeDecor = {
+    pink:["♡","♡","✦","♥"],
+    purple:["✦","◇","♡","✧"],
+    night:["✦","★","☾","·"],
+    sunset:["✦","♡","☼","·"],
+    mint:["✦","◇","♡","·"]
+  };
+
+  function renderThemeDecor(theme){
+    if(!themeSymbols){
+      return;
+    }
+
+    themeSymbols.innerHTML = "";
+
+    var symbols = themeDecor[theme] || themeDecor.pink;
+    var count = lowPowerMode ? 5 : 12;
+
+    for(var i = 0; i < count; i++){
+      var item = document.createElement("span");
+      item.className = "theme-symbol";
+      item.textContent = symbols[i % symbols.length];
+      item.style.left = (6 + Math.random() * 88) + "%";
+      item.style.top = (8 + Math.random() * 84) + "%";
+      item.style.setProperty("--symbol-size",(13 + Math.random() * 18) + "px");
+      item.style.setProperty("--symbol-dur",(10 + Math.random() * 8) + "s");
+      item.style.setProperty("--symbol-delay",(-Math.random() * 8) + "s");
+      themeSymbols.appendChild(item);
+    }
+  }
+
   var themeButtons = document.querySelectorAll(".theme-btn");
   var savedTheme = localStorage.getItem("nazli-theme") || "pink";
   var allowedThemes = ["pink","purple","night","sunset","mint"];
@@ -1706,6 +2009,20 @@ footer{
 
     document.body.setAttribute("data-theme",theme);
     localStorage.setItem("nazli-theme",theme);
+    renderThemeDecor(theme);
+
+    var themeColors = {
+      pink:"#1a0c24",
+      purple:"#160d2d",
+      night:"#081426",
+      sunset:"#2a1018",
+      mint:"#09231f"
+    };
+
+    var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if(themeColorMeta){
+      themeColorMeta.setAttribute("content",themeColors[theme] || themeColors.pink);
+    }
 
     themeButtons.forEach(function(button){
       button.classList.toggle("active",button.getAttribute("data-theme-choice") === theme);
