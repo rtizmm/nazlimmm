@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a0c24">
+<meta name="description" content="Nazlıma özel küçük bir köşe ♡">
 <title>bebegime ♡</title>
 
 <style>
+:root{
+  --bg-1:#14091d;
+  --bg-2:#2a1029;
+  --bg-3:#120918;
+  --pink:#ff7eb3;
+  --pink-2:#ff9bc2;
+  --pink-3:#e96b9b;
+  --purple:#a86cff;
+  --text:#fff7fb;
+  --muted:#f4bfd2;
+  --glass:rgba(255,255,255,.07);
+  --glass-strong:rgba(255,255,255,.11);
+  --border:rgba(255,255,255,.14);
+  --shadow:0 18px 55px rgba(0,0,0,.32);
+  --mx:0px;
+  --my:0px;
+}
+
 *{
   box-sizing:border-box;
 }
@@ -17,296 +36,792 @@ html{
 
 body{
   margin:0;
-  font-family:Arial,sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at 15% 15%, #ff5f9e35 0%, transparent 30%),
-    radial-gradient(circle at 85% 80%, #9d5cff35 0%, transparent 30%),
-    linear-gradient(135deg,#180b24,#30152f,#160b20);
   min-height:100vh;
-  text-align:center;
   overflow-x:hidden;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  text-align:center;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(255,95,158,.20) 0,transparent 30%),
+    radial-gradient(circle at 84% 78%,rgba(157,92,255,.18) 0,transparent 31%),
+    linear-gradient(145deg,var(--bg-1),var(--bg-2) 48%,var(--bg-3));
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-10%;
+  pointer-events:none;
+  z-index:-3;
+  background:
+    radial-gradient(circle at 25% 30%,rgba(255,126,179,.08),transparent 28%),
+    radial-gradient(circle at 70% 60%,rgba(168,108,255,.08),transparent 28%);
+  transform:translate3d(calc(var(--mx) * -.45),calc(var(--my) * -.45),0);
+  transition:transform .18s ease-out;
+}
+
+::selection{
+  background:rgba(255,126,179,.35);
+  color:white;
+}
+
+#intro{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(255,111,167,.22),transparent 35%),
+    linear-gradient(145deg,#120819,#2a1029 52%,#100714);
+  transition:opacity .8s ease,visibility .8s ease;
+  animation:introAutoHide .8s ease 2.6s forwards;
+}
+
+#intro.hidden{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.intro-card{
+  width:min(440px,92vw);
+  padding:34px 24px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 25px 80px rgba(0,0,0,.42);
+}
+
+.intro-heart{
+  display:inline-grid;
+  place-items:center;
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  font-size:45px;
+  color:#ff96bf;
+  background:rgba(255,255,255,.07);
+  box-shadow:0 0 35px rgba(255,79,154,.25);
+  animation:introPulse 1.05s ease-in-out infinite;
+}
+
+.intro-title{
+  margin:20px 0 6px;
+  font-size:clamp(28px,7vw,42px);
+  color:#ff91bc;
+  text-shadow:0 0 25px rgba(255,79,154,.32);
+}
+
+.intro-sub{
+  margin:0 0 20px;
+  color:#f7c5d7;
+  font-size:14px;
+}
+
+.intro-line{
+  height:4px;
+  width:100%;
+  overflow:hidden;
+  border-radius:99px;
+  background:rgba(255,255,255,.08);
+}
+
+.intro-line::after{
+  content:"";
+  display:block;
+  width:45%;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#ff78ad,#b47cff);
+  animation:introLoad 1.4s ease-in-out infinite;
+}
+
+@keyframes introPulse{
+  50%{transform:scale(1.08)}
+}
+
+@keyframes introLoad{
+  0%{transform:translateX(-120%)}
+  100%{transform:translateX(330%)}
+}
+
+@keyframes introAutoHide{
+  to{opacity:0;visibility:hidden}
 }
 
 header{
-  padding:55px 15px 30px;
+  position:relative;
+  z-index:3;
+  padding:92px 18px 36px;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 13px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.06);
+  color:#f8c5d8;
+  font-size:13px;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.hero-heart{
+  font-size:26px;
+  color:#ff8fba;
+  text-shadow:0 0 18px #ff5f9e;
+  animation:pulse 1.35s infinite;
 }
 
 h1{
-  font-size:clamp(48px,12vw,85px);
-  margin:12px;
+  margin:16px 0 6px;
+  font-size:clamp(54px,11vw,92px);
+  line-height:.98;
+  letter-spacing:-2px;
   color:#ff7eb3;
-  text-shadow:0 0 20px #ff4f9a80,0 0 45px #ff4f9a40;
+  text-shadow:
+    0 0 20px rgba(255,79,154,.42),
+    0 0 55px rgba(255,79,154,.18);
 }
 
-h2{
-  color:#ff9bc2;
-  text-shadow:0 0 12px #ff5f9e45;
-}
-
-p{
+.hero-sub{
+  width:min(620px,92%);
+  margin:0 auto;
   line-height:1.8;
+  color:#f8c1d6;
+}
+
+main{
+  position:relative;
+  z-index:3;
+  padding-bottom:12px;
 }
 
 section{
-  width:min(650px,90%);
-  margin:25px auto;
-  padding:28px 22px;
-  border:1px solid #ffffff20;
-  border-radius:25px;
-  background:#ffffff0d;
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px);
-  box-shadow:
-    0 10px 40px #00000045,
-    inset 0 1px 0 #ffffff15;
+  width:min(760px,91%);
+  margin:24px auto;
+  padding:30px 24px;
+  border:1px solid var(--border);
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.045));
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.08);
   position:relative;
-  z-index:2;
+  overflow:hidden;
 }
 
-button{
+section::before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-90px;
+  top:-90px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,126,179,.12),transparent 68%);
+  pointer-events:none;
+}
+
+h2{
+  margin:0 0 8px;
+  color:#ff9bc2;
+  font-size:clamp(23px,5vw,31px);
+  text-shadow:0 0 14px rgba(255,95,158,.24);
+}
+
+.section-sub{
+  margin:0 auto 22px;
+  color:#edbfd0;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.timer-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:21px;
+}
+
+.time-box{
+  min-width:0;
+  padding:19px 8px 16px;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:21px;
+  background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.04));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 26px rgba(0,0,0,.14);
+}
+
+.time-value{
+  display:block;
+  font-size:clamp(27px,6vw,42px);
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-1px;
+  color:#ff91bc;
+  text-shadow:0 0 19px rgba(255,95,158,.26);
+  font-variant-numeric:tabular-nums;
+}
+
+.time-label{
+  display:block;
+  margin-top:8px;
+  color:#f0bfd1;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.timer-note{
+  margin:18px 0 0;
+  color:#f5c7d8;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.countdown-card{
+  margin-top:20px;
+  padding:22px;
+  border-radius:23px;
+  border:1px solid rgba(255,255,255,.11);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,126,179,.12),transparent 32%),
+    linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
+}
+
+.countdown-title{
+  margin:0 0 15px;
+  font-size:14px;
+  color:#ffd2e2;
+  letter-spacing:.02em;
+}
+
+.countdown-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+}
+
+.countdown-unit{
+  padding:13px 6px;
+  border-radius:16px;
+  background:rgba(0,0,0,.11);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.countdown-unit strong{
+  display:block;
+  color:#ff9fc5;
+  font-size:clamp(21px,5vw,31px);
+  font-variant-numeric:tabular-nums;
+}
+
+.countdown-unit span{
+  display:block;
+  margin-top:4px;
+  color:#ddb0c3;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
+.envelope-zone{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+  margin-top:18px;
+}
+
+.envelope-button{
+  width:min(330px,92%);
+  padding:0;
   border:0;
-  border-radius:25px;
-  padding:13px 22px;
-  background:linear-gradient(135deg,#e96b9b,#c44f8c);
-  color:white;
-  font-size:16px;
+  background:transparent;
   cursor:pointer;
-  transition:0.3s ease;
-  box-shadow:0 8px 20px #e96b9b35;
+  color:inherit;
+  -webkit-tap-highlight-color:transparent;
 }
 
-button:hover{
-  transform:translateY(-3px) scale(1.03);
-  box-shadow:0 12px 28px #e96b9b55;
+.envelope{
+  position:relative;
+  height:205px;
+  border-radius:18px;
+  overflow:hidden;
+  filter:drop-shadow(0 20px 28px rgba(0,0,0,.28));
+  transform:translateZ(0);
+  transition:transform .35s ease;
+}
+
+.envelope-button:hover .envelope{
+  transform:translateY(-4px);
+}
+
+.envelope-back{
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  background:linear-gradient(145deg,#b95781,#8e3f6b);
+  border:1px solid rgba(255,255,255,.18);
+}
+
+.envelope-paper{
+  position:absolute;
+  z-index:2;
+  left:7%;
+  right:7%;
+  top:22px;
+  height:150px;
+  border-radius:14px 14px 9px 9px;
+  background:linear-gradient(180deg,#fff8fb,#f8dce8);
+  color:#7f3658;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  font-size:14px;
+  font-weight:700;
+  transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .5s ease;
+}
+
+.envelope-front{
+  position:absolute;
+  z-index:4;
+  inset:0;
+  background:
+    linear-gradient(33deg,transparent 49.6%,#cb688f 50%) left bottom/50% 100% no-repeat,
+    linear-gradient(-33deg,transparent 49.6%,#bd5a85 50%) right bottom/50% 100% no-repeat;
+  pointer-events:none;
+}
+
+.envelope-flap{
+  position:absolute;
+  z-index:5;
+  left:0;
+  right:0;
+  top:0;
+  height:58%;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  background:linear-gradient(160deg,#dc739c,#b34c79);
+  transform-origin:top center;
+  transition:transform .65s cubic-bezier(.2,.8,.2,1),z-index 0s linear .28s;
+  backface-visibility:hidden;
+}
+
+.envelope-seal{
+  position:absolute;
+  z-index:6;
+  left:50%;
+  top:47%;
+  transform:translate(-50%,-50%);
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#ff8db7,#d44d84);
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 7px 18px rgba(0,0,0,.22),0 0 20px rgba(255,95,158,.22);
+  font-size:24px;
+  transition:opacity .28s ease,transform .28s ease;
+}
+
+.envelope-button.open .envelope-flap{
+  transform:rotateX(180deg);
+  z-index:1;
+  transition:transform .65s cubic-bezier(.2,.8,.2,1),z-index 0s;
+}
+
+.envelope-button.open .envelope-paper{
+  transform:translateY(-71px);
+}
+
+.envelope-button.open .envelope-seal{
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.7);
+}
+
+.open-label{
+  margin:12px 0 0;
+  color:#f5c2d5;
+  font-size:13px;
 }
 
 #letter{
-  display:none;
-  animation:fadeIn 0.5s ease;
+  display:grid;
+  grid-template-rows:0fr;
+  width:100%;
+  opacity:0;
+  transition:grid-template-rows .7s ease,opacity .55s ease;
 }
 
-.heart{
-  font-size:28px;
-  animation:pulse 1.3s infinite;
-  color:#ff8fba;
-  text-shadow:0 0 15px #ff5f9e;
+#letter.open{
+  grid-template-rows:1fr;
+  opacity:1;
 }
 
-@keyframes pulse{
-  50%{
-    transform:scale(1.2);
-  }
+.letter-inner{
+  min-height:0;
+  overflow:hidden;
 }
 
-@keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.letter-paper{
+  margin-top:3px;
+  padding:24px 22px;
+  border-radius:21px;
+  text-align:left;
+  color:#5f2943;
+  background:
+    linear-gradient(rgba(255,255,255,.82),rgba(255,255,255,.82)),
+    repeating-linear-gradient(180deg,transparent 0,transparent 30px,rgba(222,134,168,.18) 31px);
+  box-shadow:0 16px 35px rgba(0,0,0,.2);
+  transform:translateY(-8px);
+  transition:transform .6s ease;
 }
 
-.counter{
-  font-size:24px;
-  font-weight:bold;
-  color:#ff8fba;
-  text-shadow:0 0 15px #ff5f9e55;
+#letter.open .letter-paper{
+  transform:translateY(0);
+}
+
+.letter-paper p{
+  margin:0 0 15px;
+  line-height:1.9;
+}
+
+.letter-paper p:last-child{
+  margin-bottom:0;
+}
+
+.spotify-shell{
+  position:relative;
+  overflow:hidden;
+  margin-top:19px;
+  padding:16px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,.12);
+  background:
+    radial-gradient(circle at 88% 10%,rgba(30,215,96,.13),transparent 30%),
+    linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
+  box-shadow:0 16px 35px rgba(0,0,0,.2);
+}
+
+.spotify-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-align:left;
+  margin:2px 2px 14px;
+}
+
+.spotify-icon{
+  flex:0 0 auto;
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:rgba(30,215,96,.14);
+  border:1px solid rgba(30,215,96,.18);
+  font-size:23px;
+}
+
+.spotify-text strong{
+  display:block;
+  color:#fff0f6;
+  font-size:15px;
+}
+
+.spotify-text span{
+  display:block;
+  margin-top:3px;
+  color:#cfacba;
+  font-size:12px;
+}
+
+.spotify-shell iframe{
+  display:block;
+  width:100%;
+  height:352px;
+  border:0;
+  border-radius:17px;
+  box-shadow:0 12px 28px rgba(0,0,0,.24);
 }
 
 footer{
-  padding:25px;
-  color:#f8bad2;
   position:relative;
-  z-index:2;
+  z-index:3;
+  padding:27px 18px calc(34px + env(safe-area-inset-bottom));
+  color:#f8bad2;
+  font-size:14px;
 }
 
-iframe{
-  box-shadow:0 10px 30px #00000035;
-}
-
-/* Arka planda uçuşan kalpler */
+#starfield,
+#particles,
 #floating-hearts{
   position:fixed;
   inset:0;
   overflow:hidden;
   pointer-events:none;
-  z-index:0;
+}
+
+#starfield{
+  z-index:-2;
+  transform:translate3d(calc(var(--mx) * .35),calc(var(--my) * .35),0);
+  transition:transform .22s ease-out;
+}
+
+#particles{
+  z-index:-1;
+  transform:translate3d(calc(var(--mx) * .65),calc(var(--my) * .65),0);
+  transition:transform .2s ease-out;
+}
+
+#floating-hearts{
+  z-index:1;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:white;
+  opacity:.2;
+  animation:twinkle var(--dur,4s) ease-in-out infinite;
+  animation-delay:var(--delay,0s);
+  box-shadow:0 0 7px rgba(255,255,255,.5);
+}
+
+.particle{
+  position:absolute;
+  bottom:-40px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  opacity:0;
+  background:rgba(255,138,183,.6);
+  box-shadow:0 0 12px rgba(255,95,158,.35);
+  animation:floatParticle var(--dur,13s) linear infinite;
+  animation-delay:var(--delay,0s);
 }
 
 #floating-hearts span{
   position:absolute;
   bottom:-60px;
   color:#ff8fba;
-  font-size:24px;
   opacity:0;
-  animation:floatHeart 9s linear infinite;
   text-shadow:0 0 12px #ff5f9e;
+  animation:floatHeart 10s linear infinite;
 }
 
-#floating-hearts span:nth-child(1){
-  left:8%;
-  animation-delay:0s;
-  font-size:20px;
-}
+#floating-hearts span:nth-child(1){left:7%;animation-delay:0s;font-size:19px}
+#floating-hearts span:nth-child(2){left:21%;animation-delay:2s;font-size:27px}
+#floating-hearts span:nth-child(3){left:37%;animation-delay:4s;font-size:17px}
+#floating-hearts span:nth-child(4){left:54%;animation-delay:1s;font-size:25px}
+#floating-hearts span:nth-child(5){left:72%;animation-delay:3s;font-size:20px}
+#floating-hearts span:nth-child(6){left:89%;animation-delay:5s;font-size:28px}
 
-#floating-hearts span:nth-child(2){
-  left:22%;
-  animation-delay:2s;
-  font-size:27px;
-}
-
-#floating-hearts span:nth-child(3){
-  left:38%;
-  animation-delay:4s;
-  font-size:18px;
-}
-
-#floating-hearts span:nth-child(4){
-  left:55%;
-  animation-delay:1s;
-  font-size:25px;
-}
-
-#floating-hearts span:nth-child(5){
-  left:73%;
-  animation-delay:3s;
-  font-size:21px;
-}
-
-#floating-hearts span:nth-child(6){
-  left:90%;
-  animation-delay:5s;
-  font-size:29px;
-}
-
-@keyframes floatHeart{
-  0%{
-    transform:translateY(0) rotate(0deg);
-    opacity:0;
-  }
-
-  15%{
-    opacity:0.45;
-  }
-
-  70%{
-    opacity:0.3;
-  }
-
-  100%{
-    transform:translateY(-115vh) rotate(360deg);
-    opacity:0;
-  }
-}
-
-/* Tıklayınca çıkan kalpler */
+.trail-heart,
 .click-heart{
   position:fixed;
   pointer-events:none;
-  font-size:24px;
-  color:#ff79ad;
   z-index:9999;
+  color:#ff83b3;
+  text-shadow:0 0 11px rgba(255,79,154,.65);
+  will-change:transform,opacity;
+}
+
+.trail-heart{
+  font-size:17px;
+  animation:trailFloat .95s ease-out forwards;
+}
+
+.click-heart{
+  font-size:24px;
   animation:clickHeart 1s ease-out forwards;
-  text-shadow:0 0 10px #ff4f9a;
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.16)}
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:.12;transform:scale(.8)}
+  50%{opacity:.75;transform:scale(1.45)}
+}
+
+@keyframes floatParticle{
+  0%{transform:translate3d(0,0,0) scale(.6);opacity:0}
+  10%{opacity:.38}
+  70%{opacity:.22}
+  100%{transform:translate3d(var(--drift,20px),-115vh,0) scale(1.15);opacity:0}
+}
+
+@keyframes floatHeart{
+  0%{transform:translateY(0) rotate(0deg);opacity:0}
+  15%{opacity:.42}
+  70%{opacity:.26}
+  100%{transform:translateY(-115vh) rotate(360deg);opacity:0}
+}
+
+@keyframes trailFloat{
+  0%{opacity:.85;transform:translate(-50%,-50%) scale(.55) rotate(0)}
+  100%{opacity:0;transform:translate(-50%,-75px) scale(1.1) rotate(22deg)}
 }
 
 @keyframes clickHeart{
-  0%{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(0.5) rotate(0deg);
-  }
-
-  50%{
-    opacity:1;
-    transform:translate(-50%,-100px) scale(1.2) rotate(15deg);
-  }
-
-  100%{
-    opacity:0;
-    transform:translate(-50%,-170px) scale(0.8) rotate(-15deg);
-  }
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.5) rotate(0)}
+  55%{opacity:1;transform:translate(-50%,-100px) scale(1.18) rotate(14deg)}
+  100%{opacity:0;transform:translate(-50%,-165px) scale(.8) rotate(-12deg)}
 }
 
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .75s ease,transform .75s ease;
+}
 
-/* 📱 MOBİL TASARIM */
-@media (max-width:600px){
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
 
-  body{
-    font-size:15px;
-  }
-
+@media (max-width:700px){
   header{
-    padding:40px 15px 20px;
+    padding:72px 16px 28px;
   }
 
   h1{
-    font-size:58px;
-    margin:10px 0;
+    font-size:clamp(55px,18vw,76px);
   }
 
-  header p{
+  .hero-sub{
     font-size:14px;
   }
 
   section{
-    width:92%;
-    margin:18px auto;
-    padding:23px 17px;
-    border-radius:20px;
+    width:93%;
+    margin:17px auto;
+    padding:24px 17px;
+    border-radius:24px;
   }
 
-  h2{
-    font-size:22px;
+  .timer-grid,
+  .countdown-grid{
+    gap:8px;
   }
 
-  .counter{
-    font-size:19px;
-    line-height:1.7;
+  .time-box{
+    padding:16px 4px 13px;
+    border-radius:17px;
   }
 
-  #letter p{
-    font-size:15px;
-    line-height:1.9;
-    text-align:left;
+  .time-value{
+    font-size:clamp(25px,8vw,34px);
   }
 
-  button{
-    width:100%;
-    padding:14px;
-    font-size:16px;
+  .time-label{
+    font-size:10px;
   }
 
-  iframe{
-    height:352px;
+  .countdown-card{
+    padding:16px 11px;
   }
 
-  footer{
-    padding:20px 15px 30px;
+  .countdown-unit{
+    padding:11px 3px;
+  }
+
+  .envelope{
+    height:185px;
+  }
+
+  .envelope-paper{
+    height:138px;
+  }
+
+  .letter-paper{
+    padding:20px 17px;
     font-size:14px;
   }
 
-  .heart{
-    font-size:25px;
+  .spotify-shell{
+    padding:11px;
+    border-radius:21px;
   }
 
-  #floating-hearts span{
-    font-size:20px !important;
+  .spotify-shell iframe{
+    height:352px;
+    border-radius:15px;
   }
 
+  .spotify-head{
+    margin:3px 3px 12px;
+  }
+}
+
+@media (max-width:390px){
+  .time-label{
+    font-size:9px;
+    letter-spacing:.04em;
+  }
+
+  .time-value{
+    font-size:24px;
+  }
+
+  .countdown-unit strong{
+    font-size:20px;
+  }
+
+  .countdown-unit span{
+    font-size:9px;
+    letter-spacing:.03em;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+
+  #intro{
+    display:none;
+  }
 }
 </style>
-
 </head>
 
 <body>
+<div id="intro" aria-hidden="true">
+  <div class="intro-card">
+    <div class="intro-heart">♡</div>
+    <div class="intro-title">nazlimm</div>
+    <p class="intro-sub">sana küçük bir şey hazırladım...</p>
+    <div class="intro-line"></div>
+  </div>
+</div>
 
-<!-- Arka plan kalpleri -->
+<div id="starfield" aria-hidden="true"></div>
+<div id="particles" aria-hidden="true"></div>
 
-<div id="floating-hearts">
+<div id="floating-hearts" aria-hidden="true">
   <span>♡</span>
   <span>♡</span>
   <span>♡</span>
@@ -315,108 +830,377 @@ iframe{
   <span>♡</span>
 </div>
 
-<header>
-  <div class="heart">♡</div>
-  <p>elimden pek gelmesede bu benden sana bebeğim...</p>
+<header class="reveal">
+  <div class="hero-badge"><span class="hero-heart">♡</span> sadece sana özel</div>
   <h1>nazlimm ♡</h1>
-  <p>iyiki benım sevgılım olmussun.</p>
+  <p class="hero-sub">elimden pek gelmesede bu benden sana bebeğim... iyiki benım sevgılım olmussun.</p>
 </header>
 
-<section>
-  <h2>Birlikte geçen zaman ⏳</h2>
-  <div class="counter" id="counter">Hesaplanıyor...</div>
-  <p>seninle geçen her an benim için sandıgından cok daha degerli askim ♡</p>
-</section>
+<main>
+  <section class="reveal">
+    <h2>Birlikte geçen zaman ⏳</h2>
+    <p class="section-sub">20 Eylül 2026'dan beri geçen her saniye burada akmaya devam ediyor ♡</p>
 
-<section>
-  <h2>bu benden sana askim 💌</h2>
-  <p>buraya senın ıcın bır seyler biraktim...</p>
+    <div class="timer-grid" aria-label="Birlikte geçen zaman">
+      <div class="time-box">
+        <span class="time-value" id="togetherDays">0</span>
+        <span class="time-label">Gün</span>
+      </div>
+      <div class="time-box">
+        <span class="time-value" id="togetherHours">00</span>
+        <span class="time-label">Saat</span>
+      </div>
+      <div class="time-box">
+        <span class="time-value" id="togetherMinutes">00</span>
+        <span class="time-label">Dakika</span>
+      </div>
+      <div class="time-box">
+        <span class="time-value" id="togetherSeconds">00</span>
+        <span class="time-label">Saniye</span>
+      </div>
+    </div>
 
-  <button onclick="showLetter()">Mektubunu aç ♡</button>
+    <p class="timer-note">seninle geçen her an benim için sandıgından cok daha degerli askim ♡</p>
+  </section>
 
-  <div id="letter">
-    <p>bebegim nazlimaa</p>
+  <section class="reveal">
+    <h2>Sıradaki yıldönümümüz ✨</h2>
+    <p class="section-sub" id="anniversaryText">20 Eylül'e kalan süre hesaplanıyor...</p>
 
-    <p>
-      nazlimmm askimmm bebegimmm herseyımm senı cok sevıyorum sana deger veren herkesten senı daha cok sevıyorum hayatimda gordugum en guzel kızsın
-      iyiki benım sevgılım olmussun senı cok cok cok ama cok sevıyorum sana verdıgım degerın haddi hesabı yok,
-      bazen senı uzebılırım salak salak konusup mal mal anlatıp canını sıkabılırım cok ozur dılerım sevgılım ama ne yasarsak yasarsak yasayalım senı cok sevecegım
-      benden sıkılsanda senı cok sevıcem her zaman benım kalbimde yerin olucak senı cok sevıyorum bebegimmmm her zaman yaninda olucam her zaman senı sevecegım iyiki
-      benım sevgılım olmussun sana cok asıgımmm
-    </p>
+    <div class="countdown-card">
+      <p class="countdown-title">bir sonraki 20 Eylül'e kalan</p>
+      <div class="countdown-grid" aria-label="Yıldönümüne geri sayım">
+        <div class="countdown-unit">
+          <strong id="countDays">0</strong>
+          <span>Gün</span>
+        </div>
+        <div class="countdown-unit">
+          <strong id="countHours">00</strong>
+          <span>Saat</span>
+        </div>
+        <div class="countdown-unit">
+          <strong id="countMinutes">00</strong>
+          <span>Dakika</span>
+        </div>
+        <div class="countdown-unit">
+          <strong id="countSeconds">00</strong>
+          <span>Saniye</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p>iyiki varsın bebegim seni cok sevıyorum ♡</p>
-  </div>
-</section>
+  <section class="reveal">
+    <h2>bu benden sana askim 💌</h2>
+    <p class="section-sub">buraya senın ıcın bır seyler biraktim...</p>
 
-<section>
-  <h2>Bizim playlistimiz 🎵</h2>
-  <p>bizim sarkilarimizz♡</p>
+    <div class="envelope-zone">
+      <button class="envelope-button" id="envelopeButton" type="button" aria-expanded="false" aria-controls="letter">
+        <div class="envelope">
+          <div class="envelope-back"></div>
+          <div class="envelope-paper">Mektubunu açmak için dokun ♡</div>
+          <div class="envelope-front"></div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">♡</div>
+        </div>
+        <p class="open-label" id="openLabel">Mektubunu aç ♡</p>
+      </button>
 
-  <iframe
-    style="border-radius:12px"
-    src="https://open.spotify.com/embed/playlist/6NyRmMt13dUIeXdh6IEstU"
-    width="100%"
-    height="352"
-    frameborder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-  </iframe>
-</section>
+      <div id="letter" aria-hidden="true">
+        <div class="letter-inner">
+          <div class="letter-paper">
+            <p>bebegim nazlimaa</p>
 
-<footer>
+            <p>
+              nazlimmm askimmm bebegimmm herseyımm senı cok sevıyorum sana deger veren herkesten senı daha cok sevıyorum hayatimda gordugum en guzel kızsın
+              iyiki benım sevgılım olmussun senı cok cok cok ama cok sevıyorum sana verdıgım degerın haddi hesabı yok,
+              bazen senı uzebılırım salak salak konusup mal mal anlatıp canını sıkabılırım cok ozur dılerım sevgılım ama ne yasarsak yasarsak yasayalım senı cok sevecegım
+              benden sıkılsanda senı cok sevıcem her zaman benım kalbimde yerin olucak senı cok sevıyorum bebegimmmm her zaman yaninda olucam her zaman senı sevecegım iyiki
+              benım sevgılım olmussun sana cok asıgımmm
+            </p>
+
+            <p>iyiki varsın bebegim seni cok sevıyorum ♡</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Bizim playlistimiz 🎵</h2>
+    <p class="section-sub">bizim sarkilarimizz♡</p>
+
+    <div class="spotify-shell">
+      <div class="spotify-head">
+        <div class="spotify-icon">♫</div>
+        <div class="spotify-text">
+          <strong>bizim playlistimiz</strong>
+          <span>beraber dinlediğimiz şarkılar burada ♡</span>
+        </div>
+      </div>
+
+      <iframe
+        src="https://open.spotify.com/embed/playlist/6NyRmMt13dUIeXdh6IEstU"
+        title="Bizim Spotify playlistimiz"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+</main>
+
+<footer class="reveal">
   senınle cok daha guzel gunlere bebegım ♡
 </footer>
 
 <script>
+(function(){
+  "use strict";
 
-// İlişkinizin başlangıç tarihi
-const baslangic = new Date("2026-09-20T00:00:00");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isSmallScreen = window.matchMedia("(max-width: 700px)").matches;
 
-function sayaciGuncelle(){
-  const fark = Date.now() - baslangic.getTime();
+  var intro = document.getElementById("intro");
+  window.addEventListener("load", function(){
+    window.setTimeout(function(){
+      if(intro){
+        intro.classList.add("hidden");
+      }
+    }, prefersReducedMotion ? 0 : 1250);
+  });
 
-  const gun = Math.floor(fark / 86400000);
-  const saat = Math.floor((fark % 86400000) / 3600000);
-  const dakika = Math.floor((fark % 3600000) / 60000);
-  const saniye = Math.floor((fark % 60000) / 1000);
+  function pad(value){
+    return String(value).padStart(2,"0");
+  }
 
-  document.getElementById("counter").textContent =
-    `${gun} gün ${saat} saat ${dakika} dakika ${saniye} saniye ♡`;
-}
+  var relationshipStart = new Date(2026,8,20,0,0,0,0);
 
-function showLetter(){
-  const mektup = document.getElementById("letter");
-  mektup.style.display = "block";
-}
+  function updateTogetherTimer(){
+    var now = new Date();
+    var diff = Math.max(0, now.getTime() - relationshipStart.getTime());
 
-// Siteye tıklayınca kalp çıkar
-document.addEventListener("click", function(e){
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var minutes = Math.floor((diff % 3600000) / 60000);
+    var seconds = Math.floor((diff % 60000) / 1000);
 
-  const kalp = document.createElement("div");
-  kalp.className = "click-heart";
+    document.getElementById("togetherDays").textContent = days;
+    document.getElementById("togetherHours").textContent = pad(hours);
+    document.getElementById("togetherMinutes").textContent = pad(minutes);
+    document.getElementById("togetherSeconds").textContent = pad(seconds);
+  }
 
-  const kalpler = ["♡","♥","💗","💕"];
+  function getNextAnniversary(){
+    var now = new Date();
+    var target = new Date(now.getFullYear(),8,20,0,0,0,0);
 
-  kalp.textContent =
-    kalpler[Math.floor(Math.random() * kalpler.length)];
+    if(now.getMonth() === 8 && now.getDate() === 20){
+      target = new Date(now.getFullYear() + 1,8,20,0,0,0,0);
+    }else if(now > target){
+      target = new Date(now.getFullYear() + 1,8,20,0,0,0,0);
+    }
 
-  kalp.style.left = e.clientX + "px";
-  kalp.style.top = e.clientY + "px";
+    return target;
+  }
 
-  document.body.appendChild(kalp);
+  function updateAnniversaryCountdown(){
+    var now = new Date();
+    var target = getNextAnniversary();
+    var diff = Math.max(0, target.getTime() - now.getTime());
 
-  setTimeout(() => {
-    kalp.remove();
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var minutes = Math.floor((diff % 3600000) / 60000);
+    var seconds = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById("countDays").textContent = days;
+    document.getElementById("countHours").textContent = pad(hours);
+    document.getElementById("countMinutes").textContent = pad(minutes);
+    document.getElementById("countSeconds").textContent = pad(seconds);
+    document.getElementById("anniversaryText").textContent =
+      target.getFullYear() + " yıldönümümüze doğru geri sayım ♡";
+  }
+
+  updateTogetherTimer();
+  updateAnniversaryCountdown();
+  window.setInterval(function(){
+    updateTogetherTimer();
+    updateAnniversaryCountdown();
   },1000);
 
-});
+  var envelopeButton = document.getElementById("envelopeButton");
+  var letter = document.getElementById("letter");
+  var openLabel = document.getElementById("openLabel");
 
-sayaciGuncelle();
-setInterval(sayaciGuncelle,1000);
+  envelopeButton.addEventListener("click", function(){
+    var isOpen = envelopeButton.classList.toggle("open");
+    letter.classList.toggle("open",isOpen);
+    envelopeButton.setAttribute("aria-expanded",String(isOpen));
+    letter.setAttribute("aria-hidden",String(!isOpen));
+    openLabel.textContent = isOpen ? "Mektubu kapat ♡" : "Mektubunu aç ♡";
 
+    if(isOpen){
+      window.setTimeout(function(){
+        letter.scrollIntoView({behavior:prefersReducedMotion ? "auto" : "smooth",block:"nearest"});
+      }, prefersReducedMotion ? 0 : 400);
+    }
+  });
+
+  var starfield = document.getElementById("starfield");
+  var particles = document.getElementById("particles");
+
+  function createStars(){
+    if(prefersReducedMotion){
+      return;
+    }
+
+    var count = isSmallScreen ? 42 : 78;
+
+    for(var i = 0; i < count; i++){
+      var star = document.createElement("span");
+      star.className = "star";
+      star.style.left = (Math.random() * 100) + "%";
+      star.style.top = (Math.random() * 100) + "%";
+      star.style.setProperty("--dur",(2.8 + Math.random() * 4.8) + "s");
+      star.style.setProperty("--delay",(-Math.random() * 5) + "s");
+
+      var size = 1 + Math.random() * 2.3;
+      star.style.width = size + "px";
+      star.style.height = size + "px";
+
+      starfield.appendChild(star);
+    }
+  }
+
+  function createParticles(){
+    if(prefersReducedMotion){
+      return;
+    }
+
+    var count = isSmallScreen ? 12 : 24;
+
+    for(var i = 0; i < count; i++){
+      var particle = document.createElement("span");
+      particle.className = "particle";
+      particle.style.left = (Math.random() * 100) + "%";
+      particle.style.setProperty("--dur",(10 + Math.random() * 10) + "s");
+      particle.style.setProperty("--delay",(-Math.random() * 16) + "s");
+      particle.style.setProperty("--drift",(-45 + Math.random() * 90) + "px");
+
+      var size = 3 + Math.random() * 5;
+      particle.style.width = size + "px";
+      particle.style.height = size + "px";
+
+      particles.appendChild(particle);
+    }
+  }
+
+  createStars();
+  createParticles();
+
+  var parallaxFrame = null;
+
+  function setParallax(clientX,clientY){
+    if(prefersReducedMotion){
+      return;
+    }
+
+    if(parallaxFrame){
+      cancelAnimationFrame(parallaxFrame);
+    }
+
+    parallaxFrame = requestAnimationFrame(function(){
+      var x = ((clientX / window.innerWidth) - 0.5) * 18;
+      var y = ((clientY / window.innerHeight) - 0.5) * 18;
+      document.documentElement.style.setProperty("--mx",x + "px");
+      document.documentElement.style.setProperty("--my",y + "px");
+    });
+  }
+
+  window.addEventListener("pointermove",function(event){
+    setParallax(event.clientX,event.clientY);
+  },{passive:true});
+
+  var lastTrail = 0;
+
+  function spawnTrailHeart(x,y){
+    if(prefersReducedMotion){
+      return;
+    }
+
+    var now = Date.now();
+    var throttle = isSmallScreen ? 120 : 75;
+
+    if(now - lastTrail < throttle){
+      return;
+    }
+
+    lastTrail = now;
+
+    var heart = document.createElement("div");
+    heart.className = "trail-heart";
+    heart.textContent = Math.random() > 0.48 ? "♡" : "♥";
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+    document.body.appendChild(heart);
+
+    window.setTimeout(function(){
+      heart.remove();
+    },1000);
+  }
+
+  window.addEventListener("pointermove",function(event){
+    spawnTrailHeart(event.clientX,event.clientY);
+  },{passive:true});
+
+  document.addEventListener("click",function(event){
+    if(prefersReducedMotion){
+      return;
+    }
+
+    var heart = document.createElement("div");
+    heart.className = "click-heart";
+
+    var hearts = ["♡","♥","💗","💕"];
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = event.clientX + "px";
+    heart.style.top = event.clientY + "px";
+    document.body.appendChild(heart);
+
+    window.setTimeout(function(){
+      heart.remove();
+    },1050);
+  });
+
+  var revealItems = document.querySelectorAll(".reveal");
+
+  if("IntersectionObserver" in window && !prefersReducedMotion){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.12});
+
+    revealItems.forEach(function(item){
+      observer.observe(item);
+    });
+  }else{
+    revealItems.forEach(function(item){
+      item.classList.add("visible");
+    });
+  }
+
+  window.setTimeout(function(){
+    var header = document.querySelector("header.reveal");
+    if(header){
+      header.classList.add("visible");
+    }
+  }, prefersReducedMotion ? 0 : 200);
+})();
 </script>
-
 </body>
 </html>
