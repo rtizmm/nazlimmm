@@ -2355,6 +2355,81 @@ footer{
     display:none;
   }
 }
+/* İlk ay: mevcut temalarla uyumlu, görselsiz ve hafif. */
+.chapter-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:24px auto 0}
+.chapter-nav a{display:inline-flex;align-items:center;min-height:44px;padding:10px 15px;border:1px solid var(--theme-line);border-radius:999px;background:rgba(255,255,255,.045);color:var(--muted);font-size:12px;text-decoration:none;transition:background .2s,transform .2s}
+.chapter-nav a:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+:is(a,button,summary):focus-visible{outline:2px solid var(--pink-2);outline-offset:5px}
+#firstMonth,#ourTimeline,#loveJar{scroll-margin-top:88px}
+#firstMonth{padding:36px;text-align:left;border-color:var(--theme-line)}
+.month-topline{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:11px;letter-spacing:.08em}
+.month-chip{padding:7px 11px;border:1px solid var(--theme-line);border-radius:99px;color:var(--pink-2);letter-spacing:.04em;background:var(--theme-card-tint)}
+.month-layout{display:grid;grid-template-columns:1fr 176px;align-items:center;gap:26px;margin:28px 0}
+#firstMonth h2{font-size:clamp(30px,5.5vw,45px);line-height:1.18;letter-spacing:-1.4px;color:var(--text);text-shadow:none;margin-bottom:16px}
+#firstMonth h2 span{color:var(--pink-2)}
+.month-intro{max-width:410px;color:var(--muted);font-size:14px;line-height:1.85;margin:0}
+.month-stamp{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:170px;height:170px;border:1px solid var(--theme-line);border-radius:50%;background:radial-gradient(circle,var(--theme-card-tint),transparent 70%);transform:rotate(8deg)}
+.month-stamp::before{content:"";position:absolute;inset:7px;border:1px dashed var(--theme-line);border-radius:50%}
+.month-stamp::after{content:"♡";position:absolute;right:1px;top:3px;background:var(--bg-2);border-radius:50%;padding:3px 8px;font-size:26px;color:var(--pink-2)}
+.month-stamp b{font-family:Georgia,serif;font-weight:400;font-size:76px;line-height:1;color:var(--pink-2)}
+.month-stamp span{margin-top:7px;color:var(--muted);font-size:11px;letter-spacing:.16em}
+.month-letter{border-top:1px solid var(--theme-line);padding-top:20px;scroll-margin-top:90px}
+.month-letter summary{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:48px;cursor:pointer;list-style:none;color:var(--pink-2);font-size:14px;font-weight:650}
+.month-letter summary::-webkit-details-marker,.jar-collection summary::-webkit-details-marker{display:none}
+.month-letter summary::after{content:"+";font-size:24px;font-weight:300}
+.month-letter[open] summary::after{content:"−"}
+.month-letter-body{padding:22px 24px;margin-top:16px;border-radius:18px;background:rgba(255,249,243,.96);color:#603b4c;font-size:14px;line-height:1.95;box-shadow:0 10px 25px rgba(0,0,0,.12)}
+.month-letter-body p{margin:0 0 16px}.month-letter-body p:last-child{margin-bottom:0}
+.month-signature{text-align:right;font-style:italic}
+.story-status{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:20px 0}
+.story-status strong{color:var(--pink-2);font-weight:650}
+.timeline-milestone .timeline-card{border-color:var(--pink);background:linear-gradient(125deg,var(--theme-card-tint),rgba(255,255,255,.035))}
+.timeline-card .timeline-letter-link{display:inline-flex;min-height:40px;align-items:center;margin-top:8px;color:var(--pink-2);font-size:12px;text-underline-offset:4px}
+.timeline-now{display:inline-block;margin-left:8px;padding:3px 7px;border:1px solid var(--theme-line);border-radius:99px;font-size:9px;vertical-align:middle;letter-spacing:.03em}
+.month-countdown{margin:26px auto 0;padding:20px;text-align:left;border:1px solid var(--theme-line);border-radius:19px;background:rgba(0,0,0,.09)}
+.month-countdown-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;line-height:1.7}
+.month-countdown-head strong{color:var(--pink-2);font-size:15px}
+.month-progress{height:5px;overflow:hidden;background:rgba(255,255,255,.08);border-radius:9px;margin-top:15px}
+.month-progress span{display:block;height:100%;width:0;background:var(--pink);border-radius:inherit;transition:width .5s}
+.month-countdown p{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.7}
+#loveJar{padding:32px 28px}
+.jar-eyebrow{font-size:10px;letter-spacing:.17em;color:var(--pink-2);margin:0 0 10px}
+.jar-layout{display:grid;grid-template-columns:180px 1fr;align-items:center;gap:24px;margin-top:22px}
+.jar-drawing{position:relative;width:150px;height:183px;margin:10px auto 24px;border:1px solid var(--theme-line);border-top:0;border-radius:16px 16px 36px 36px;background:linear-gradient(100deg,rgba(255,255,255,.14),rgba(255,255,255,.025) 35%,rgba(255,255,255,.08));box-shadow:inset 0 -10px 20px rgba(255,255,255,.025),0 15px 28px rgba(0,0,0,.12)}
+.jar-drawing::before{content:"";position:absolute;left:-6px;right:-6px;top:-9px;height:20px;border:1px solid var(--theme-line);border-radius:7px;background:linear-gradient(180deg,var(--bg-2),var(--bg-1));box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.jar-drawing::after{content:"senin icin ♡";position:absolute;left:22px;right:22px;top:71px;padding:12px 0;background:#f9e5e5;color:#744455;border-radius:4px;font-size:12px;transform:rotate(-5deg);box-shadow:0 3px 8px rgba(0,0,0,.12)}
+.jar-slip{position:absolute;width:32px;height:22px;left:var(--x);bottom:var(--y);transform:rotate(var(--r));border:1px solid rgba(255,255,255,.2);border-radius:3px;background:var(--pink);opacity:.5}
+.jar-drawing.shaking{animation:jarShake .45s ease-in-out}
+@keyframes jarShake{25%{transform:rotate(-5deg)}65%{transform:rotate(5deg)}100%{transform:rotate(0)}}
+.jar-note{position:relative;min-height:170px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;padding:23px;border-radius:18px;border:1px solid var(--theme-line);background:linear-gradient(135deg,var(--theme-card-tint),rgba(255,255,255,.025))}
+.jar-note-number{color:var(--pink-2);font-size:10px;letter-spacing:.09em;margin:0 0 12px}
+#jarMessage{font-size:15px;line-height:1.85;margin:0;color:var(--text)}
+.jar-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}
+.jar-actions .soft-button{min-height:46px}
+#jarProgress{font-size:11px;line-height:1.5;color:var(--muted)}
+.jar-collection{margin-top:24px;border-top:1px solid var(--theme-line);padding-top:16px;text-align:left}
+.jar-collection summary{cursor:pointer;list-style:none;min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}
+.jar-collection summary::after{content:"+";font-size:20px}.jar-collection[open] summary::after{content:"−"}
+.jar-collection ol{max-height:310px;overflow:auto;overscroll-behavior:contain;margin:12px 0 0;padding:0 5px 0 24px;color:var(--muted);font-size:13px;line-height:1.8}
+.jar-collection li{padding:10px 3px 10px 5px;border-bottom:1px solid var(--theme-line)}
+.jar-empty,.jar-save-hint{color:var(--muted);font-size:11px;line-height:1.7;margin:12px 0 0}.jar-save-hint{opacity:.8}
+@media(max-width:550px){
+  #firstMonth{padding:26px 21px}
+  .month-layout{grid-template-columns:1fr 86px;gap:12px;margin:25px 0}
+  #firstMonth h2{font-size:29px;letter-spacing:-1px}
+  .month-stamp{width:84px;height:84px;align-self:start;margin-top:5px}
+  .month-stamp b{font-size:38px}.month-stamp span{font-size:7px;letter-spacing:.08em;margin-top:3px}
+  .month-stamp::before{inset:4px}.month-stamp::after{font-size:16px;right:-4px;top:-4px;padding:1px 3px}
+  .month-intro{font-size:13px}.month-topline{font-size:10px;letter-spacing:.03em}
+  .month-letter-body{padding:19px 17px;font-size:13px}
+  .month-countdown{padding:17px}.timeline-item{padding-left:43px}
+  #loveJar{padding:26px 20px}.jar-layout{grid-template-columns:1fr;gap:3px;margin-top:18px}
+  .jar-drawing{width:124px;height:139px;margin:14px auto 19px}.jar-drawing::after{top:49px;left:14px;right:14px;font-size:11px}
+  .jar-note{min-height:147px;padding:20px}.jar-actions{justify-content:center}#jarProgress{width:100%}
+  .chapter-nav{gap:6px}.chapter-nav a{font-size:11px;padding:9px 12px}
+}
+@media(max-width:359px){.month-layout{grid-template-columns:minmax(0,1fr)}.month-stamp{display:none}}
+@media(prefers-reduced-motion:reduce){.jar-drawing.shaking{animation:none}.month-progress span{transition:none}}
 </style>
 </head>
 
@@ -2407,9 +2482,106 @@ footer{
   <h1>nazlimm ♡</h1>
   <p class="hero-sub">elimden pek gelmesede bu benden sana bebeğim... iyiki benım sevgılım olmussun.</p>
   <p class="time-message" id="timeMessage"></p>
+  <nav class="chapter-nav" aria-label="bizim koselerimiz">
+    <a href="#firstMonth">ilk ayımız ♡</a>
+    <a href="#ourTimeline">bizim hikayemiz</a>
+    <a href="#loveJar">not kavanozu</a>
+  </nav>
 </header>
 
 <main>
+
+  <section class="reveal" id="firstMonth" aria-labelledby="firstMonthTitle">
+    <div class="month-topline">
+      <span>20 eylül — 20 ekim 2026</span>
+      <span class="month-chip">ilk ayımızdan ♡</span>
+    </div>
+    <div class="month-layout">
+      <div>
+        <h2 id="firstMonthTitle">1 ay olmus<br><span>bebegimmm ♡</span></h2>
+        <p class="month-intro">senınle 1 ayı doldurmusuz askimmm daha dun gıbı gelıyo bana, iyiki benım sevgılım olmussun senı cok cok cok sevıyorum</p>
+      </div>
+      <div class="month-stamp" aria-hidden="true"><b>01</b><span>aydır biz ♡</span></div>
+    </div>
+    <details class="month-letter" id="firstMonthLetter">
+      <summary>ilk ayımız ıcın sana bısey yazdım</summary>
+      <div class="month-letter-body">
+        <p>nazlimmm askimmm bebegimmmm</p>
+        <p>1 ay olmus lan senınle, bazen daha dun konusmaya baslamısız gıbı gelıyo bazen de senı cok uzun zamandır tanıyomusum gıbı. senınle konusmak sesını duymak o kadar guzel gelıyo kı bana anlatamıyorum</p>
+        <p>yanında olup sana sarılmayı cok ıstıyorum hayatim, boyle ekrandan yazınca yetmıyo bıseyler eksık kalıyo. sımdılık buraya bırakıcam bunları sen acıp okudukca az da olsa yanında gıbı olayım</p>
+        <p>iyiki benım sevgılım olmussun iyiki varsın bebegimmm, senınle daha cok aylarımız olsun beraber sacma sapan seylere gulelım konusalım her seyı. senı cok cok cok ama cok sevıyorum askimmm ♡</p>
+        <p class="month-signature">senın emirin ♡</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="reveal" id="ourTimeline">
+    <h2>bizim hikayemiz ♡</h2>
+    <p class="section-sub">bak askim bı tarih diye basladık sımdı ilk ayımız da burda</p>
+    <div class="story-status"><span>senınle</span><strong id="storyAge">20 eylulden berı ♡</strong></div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <span class="timeline-date">20 Eylül 2026</span>
+        <div class="timeline-card">
+          <strong>biz olduk ♡</strong>
+          <p>iyiki o gun benım sevgılım olmussun askimmm, bu tarıhın yerı bende cok ayrı ♡</p>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-milestone">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <span class="timeline-date"><time datetime="2026-10-20">20 Ekim 2026</time><span class="timeline-now">ilk ayımız ♡</span></span>
+        <div class="timeline-card">
+          <strong>1 ay olduk bebegimmm</strong>
+          <p>senınle 30 gun gecmıs, ben hala mesajını gorunce mal gıbı guluyorum ekrana. senı cok sevıyorum hayatim</p>
+          <a class="timeline-letter-link" id="timelineLetterLink" href="#firstMonthLetter">o gun ıcın yazdıgımı ac ♡</a>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-future">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <span class="timeline-date" id="nextMonthDate">20 Kasım 2026</span>
+        <div class="timeline-card">
+          <strong id="nextMonthTitle">2. ayımıza dogru ♡</strong>
+          <p>daha beraber cok anımız olsun ıstıyorum askimmm, burası da bızımle buyusun</p>
+        </div>
+      </div>
+    </div>
+    <div class="month-countdown">
+      <div class="month-countdown-head"><strong id="monthlyCountdownTitle">sıradakı ayımıza ♡</strong><span id="monthlyCountdown">hesaplıyom askim...</span></div>
+      <div class="month-progress" id="monthlyProgress" role="progressbar" aria-label="sıradaki ayımıza kalan yol" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="monthlyProgressFill"></span></div>
+      <p id="monthlyNote">her ayın 20sı bızım gunumuz bebegim ♡</p>
+    </div>
+  </section>
+
+  <section class="reveal" id="loveJar" aria-labelledby="loveJarTitle">
+    <p class="jar-eyebrow">ilk ayımıza 30 kucuk not</p>
+    <h2 id="loveJarTitle">sana bı kavanoz dolusu ♡</h2>
+    <p class="section-sub">canın ıstedıkce bı tane cek askimmm hepsı senın</p>
+    <div class="jar-layout">
+      <div class="jar-drawing" id="jarDrawing" aria-hidden="true">
+        <i class="jar-slip" style="--x:13%;--y:12%;--r:-18deg"></i><i class="jar-slip" style="--x:43%;--y:9%;--r:15deg"></i>
+        <i class="jar-slip" style="--x:65%;--y:23%;--r:-25deg"></i><i class="jar-slip" style="--x:31%;--y:29%;--r:25deg"></i>
+        <i class="jar-slip" style="--x:10%;--y:42%;--r:12deg"></i><i class="jar-slip" style="--x:59%;--y:49%;--r:-12deg"></i>
+        <i class="jar-slip" style="--x:32%;--y:58%;--r:-24deg"></i><i class="jar-slip" style="--x:64%;--y:67%;--r:20deg"></i>
+      </div>
+      <div>
+        <div class="jar-note" aria-live="polite" aria-atomic="true">
+          <p class="jar-note-number" id="jarNoteNumber">sana yazdım bebegim</p>
+          <p id="jarMessage">burda sana 30 tane not bıraktım askim, bı tanesını ac bakalım ♡</p>
+        </div>
+        <div class="jar-actions"><button class="soft-button" id="drawJarNote" type="button">bı not cek ♡</button><span id="jarProgress">0 / 30 notu actın</span></div>
+      </div>
+    </div>
+    <details class="jar-collection">
+      <summary>actıgın notlar da burda ♡</summary>
+      <p class="jar-empty" id="jarEmpty">once kavanozdan bı tane cek bebegim</p>
+      <ol id="jarCollection"></ol>
+    </details>
+    <p class="jar-save-hint" id="jarSaveHint">actıgın notlar bu tarayıcıda kalıyo askim, sonra yıne okursun</p>
+  </section>
 
   <section class="reveal" id="specialDayBanner">
     <div class="special-day-icon" id="specialDayIcon">♡</div>
@@ -2555,31 +2727,6 @@ footer{
     </div>
   </section>
 
-
-  <section class="reveal" id="ourTimeline">
-    <h2>bizim hikayemiz ♡</h2>
-    <p class="section-sub">buraya zamanla bizim önemli gunlerı eklerız askim</p>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="timeline-dot" aria-hidden="true"></span>
-        <span class="timeline-date">20 Eylül 2026</span>
-        <div class="timeline-card">
-          <strong>biz olduk ♡</strong>
-          <p>her seyın basladıgı gun. sımdılık timelineın ilk ve en onemlı noktası burası.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item timeline-future">
-        <span class="timeline-dot" aria-hidden="true"></span>
-        <span class="timeline-date">devam ediyor...</span>
-        <div class="timeline-card">
-          <strong>sonrakı anımız buraya</strong>
-          <p>yeni bi tarih oldukca burası da bizimle beraber buyuyecek ♡</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="reveal" id="messageCapsules">
     <h2>mesaj kapsulleri 💌</h2>
@@ -2730,6 +2877,17 @@ footer{
 (function(){
   "use strict";
 
+  // Depolama kapalı olsa da mektuplar, sayaçlar ve notlar çalışır.
+  var sessionSaved = Object.create(null);
+  function readSaved(key){
+    if(Object.prototype.hasOwnProperty.call(sessionSaved,key)){return sessionSaved[key];}
+    try{return localStorage.getItem(key);}catch(error){return null;}
+  }
+  function writeSaved(key,value){
+    sessionSaved[key] = String(value);
+    try{localStorage.setItem(key,value);return true;}catch(error){return false;}
+  }
+
   // Paylaşım linkine eklenen takip parametrelerini adres çubuğundan temizle.
   if(window.location.search){
     var cleanUrl = window.location.origin + window.location.pathname + window.location.hash;
@@ -2788,7 +2946,7 @@ footer{
   }
 
   var themeButtons = document.querySelectorAll(".theme-btn");
-  var savedTheme = localStorage.getItem("nazli-theme") || "pink";
+  var savedTheme = readSaved("nazli-theme") || "pink";
   var allowedThemes = ["pink","purple","night","sunset","mint","cyber","aurora","ocean","ember","rose","mono"];
 
   function applyTheme(theme){
@@ -2797,7 +2955,7 @@ footer{
     }
 
     document.body.setAttribute("data-theme",theme);
-    localStorage.setItem("nazli-theme",theme);
+    writeSaved("nazli-theme",theme);
     renderThemeDecor(theme);
 
     var themeColors = {
@@ -2941,7 +3099,7 @@ footer{
 
     var capsuleName = capsule.getAttribute("data-capsule");
     if(capsuleName){
-      localStorage.setItem("capsule-" + capsuleName,open ? "1" : "0");
+      writeSaved("capsule-" + capsuleName,open ? "1" : "0");
     }
   }
 
@@ -2949,7 +3107,7 @@ footer{
     var button = capsule.querySelector(".capsule-button");
     var capsuleName = capsule.getAttribute("data-capsule");
 
-    if(capsuleName && localStorage.getItem("capsule-" + capsuleName) === "1"){
+    if(capsuleName && readSaved("capsule-" + capsuleName) === "1"){
       var unlock = capsule.getAttribute("data-unlock");
 
       if(!unlock){
@@ -2984,7 +3142,7 @@ footer{
   var gameRunning = false;
   var gameTimer = null;
   var heartMover = null;
-  var gameBest = Number(localStorage.getItem("nazli-heart-best") || 0);
+  var gameBest = Number(readSaved("nazli-heart-best") || 0);
 
   if(gameBestEl){
     gameBestEl.textContent = gameBest;
@@ -3019,7 +3177,7 @@ footer{
 
     if(gameScore > gameBest){
       gameBest = gameScore;
-      localStorage.setItem("nazli-heart-best",String(gameBest));
+      writeSaved("nazli-heart-best",String(gameBest));
 
       if(gameBestEl){
         gameBestEl.textContent = gameBest;
@@ -3237,11 +3395,11 @@ footer{
       String(now.getMonth() + 1).padStart(2,"0") + "-" +
       String(now.getDate()).padStart(2,"0");
 
-    if(localStorage.getItem(midnightKey)){
+    if(readSaved(midnightKey)){
       return;
     }
 
-    localStorage.setItem(midnightKey,"1");
+    writeSaved(midnightKey,"1");
     midnightModal.classList.add("open");
     midnightModal.setAttribute("aria-hidden","false");
 
@@ -3278,7 +3436,129 @@ footer{
     return String(value).padStart(2,"0");
   }
 
-  var relationshipStart = new Date(2026,8,20,0,0,0,0);
+  var relationshipStart = new Date("2026-09-20T00:00:00+03:00");
+
+  // Aylar 30 güne yuvarlanmaz; her ayın 20'si Türkiye saatinde hesaplanır.
+  function getMonthlyMilestone(now){
+    var turkey = new Date(now.getTime() + 10800000);
+    var months = (turkey.getUTCFullYear() - 2026) * 12 + turkey.getUTCMonth() - 8;
+    if(turkey.getUTCDate() < 20){months--;}
+    months = Math.max(0,months);
+    var previous = new Date(Date.UTC(2026,8 + months,19,21));
+    var next = new Date(Date.UTC(2026,9 + months,19,21));
+    var elapsed = Math.max(0,now.getTime() - previous.getTime());
+    return {
+      months:months,
+      days:Math.floor(elapsed / 86400000),
+      next:next,
+      progress:Math.min(100,elapsed / (next - previous) * 100),
+      onDay:months > 0 && turkey.getUTCDate() === 20
+    };
+  }
+
+  function updateMonthlyMilestone(){
+    var now = new Date();
+    var milestone = getMonthlyMilestone(now);
+    var nextNumber = milestone.months + 1;
+    var remaining = Math.max(0,milestone.next - now);
+    var dateText = milestone.next.toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric",timeZone:"Europe/Istanbul"});
+    document.getElementById("storyAge").textContent = milestone.months + " ay + " + milestone.days + " gun ♡";
+    document.getElementById("nextMonthDate").textContent = dateText;
+    document.getElementById("nextMonthTitle").textContent = nextNumber + ". ayımıza dogru ♡";
+    document.getElementById("monthlyCountdownTitle").textContent = nextNumber + ". ayımıza kalan";
+    document.getElementById("monthlyCountdown").textContent = Math.floor(remaining / 86400000) + " gun · " + Math.floor(remaining % 86400000 / 3600000) + " saat · " + Math.floor(remaining % 3600000 / 60000) + " dk";
+    document.getElementById("monthlyProgressFill").style.width = milestone.progress + "%";
+    document.getElementById("monthlyProgress").setAttribute("aria-valuenow",String(Math.round(milestone.progress)));
+    document.getElementById("monthlyNote").textContent = milestone.onDay
+      ? "bugun " + milestone.months + ". ayımız bebegimmm iyiki bız ♡"
+      : "her ayın 20sı bızım gunumuz bebegim ♡";
+  }
+
+  updateMonthlyMilestone();
+  window.setInterval(updateMonthlyMilestone,1000);
+
+  document.getElementById("timelineLetterLink").addEventListener("click",function(){
+    document.getElementById("firstMonthLetter").open = true;
+  });
+
+  var jarNotes = [
+    "senı cok cok cok ama cok sevıyorum askimmm, bunu bı kere daha soylıyım dedım ♡",
+    "mesajını gorunce yuzum guluyo bebegim haberın olsun",
+    "keske sımdı yanımda olsan da sana uzun uzun sarılsam",
+    "sesını duymayı cok sevıyorum ben ya, ne anlatsan dınlerım senı",
+    "iyiki benım sevgılım olmussun nazlimmm",
+    "sen gulunce ben de ekrana bakıp guluyorum mal gıbı, cok guzelsın askim",
+    "senınle konusurken zaman nasıl gecıyo anlamıyorum valla",
+    "su an burayı okuyosun ya, alnından optum say bebegimmm ♡",
+    "bugunun nasıl gectı askim, en sacma detayına kadar anlat bana dınlerım",
+    "bı gun aynı sarkıyı yan yana dınleyelım, kulaklıgın tekı sende olsun",
+    "sana bakıp bakıp iyiki dıyorum hayatim",
+    "senınle hıc bısey yapmadan oturmak bıle guzel olur bence",
+    "1 ayı doldurmusuz bebegimmm daha nıce aylarımız olsun",
+    "sana sarılmayı ıstedıgım kadar bıseyi bu kadar cok ıstemedım galıba",
+    "bugun kendını guzel hıssetmıyosan bı de benım gozumden baksan keske",
+    "uyumadan once sana ıyı geceler demek bıle ayrı guzel gelıyo bana",
+    "sana bısey anlatmak ıcın bazen durduk yere konu arıyorum askim",
+    "en sacma seye beraber gulelım yeter, ben ona da razıyım bebegim",
+    "yanında olamasam da senı dusunuyorum hayatim, hem de baya",
+    "her gun aynı seyı soyluyorum ama sıkılmadım, senı cok sevıyorum ♡",
+    "bı gun elını tutup oyle yuruyelım, nereye gıttıgımız onemlı degıl",
+    "sen benım cok degerlımsın bebegim, bunu hıc unutma",
+    "bu notu okurken azıcık gulumsedıysen tamamdır askim benım ıstedıgım oydu",
+    "sana yazarken kelımeler bı yetmıyo ya, sarılsam daha ıyı anlatırım",
+    "nazlimmm bebegimmm askimmm, sana seslenmeyı bıle sevıyorum ben",
+    "bı gun yan yana oturup bu sıteye beraber bakalım, yazdıklarıma gulerız",
+    "senınle daha cok gunaydınlarımız olsun ıstıyorum",
+    "buraya kac kere gelsen yıne soylerım, iyiki varsın hayatim ♡",
+    "bı not daha acmak ıcın bahaneye gerek yok askimmm, hepsı senın zaten",
+    "kavanoza 30 not sıgdı da sana soylemek ıstedıklerım sıgmadı bebegimmm ♡"
+  ];
+  var jarSeen = [];
+  try{
+    var savedNotes = JSON.parse(readSaved("nazli-first-month-jar-v1") || "[]");
+    if(Array.isArray(savedNotes)){
+      jarSeen = savedNotes.filter(function(value,index,all){
+        return Number.isInteger(value) && value >= 0 && value < jarNotes.length && all.indexOf(value) === index;
+      });
+    }
+  }catch(error){jarSeen = [];}
+
+  var jarButton = document.getElementById("drawJarNote");
+  var jarDrawing = document.getElementById("jarDrawing");
+  var jarShakeTimer;
+
+  function renderJar(){
+    var count = jarSeen.length;
+    var last = count ? jarSeen[count - 1] : null;
+    document.getElementById("jarNoteNumber").textContent = count ? "not " + String(last + 1).padStart(2,"0") + " / 30 · sana yazdım" : "sana yazdım bebegim";
+    document.getElementById("jarMessage").textContent = count ? jarNotes[last] : "burda sana 30 tane not bıraktım askim, bı tanesını ac bakalım ♡";
+    document.getElementById("jarProgress").textContent = count + " / 30 notu actın";
+    jarButton.textContent = count === jarNotes.length ? "bastan karıstır ♡" : count ? "bı tane daha cek ♡" : "bı not cek ♡";
+    document.getElementById("jarEmpty").hidden = count > 0;
+    var collection = document.getElementById("jarCollection");
+    collection.textContent = "";
+    jarSeen.forEach(function(index){
+      var item = document.createElement("li");
+      item.textContent = jarNotes[index];
+      collection.appendChild(item);
+    });
+  }
+
+  renderJar();
+  jarButton.addEventListener("click",function(){
+    if(jarSeen.length === jarNotes.length){jarSeen = [];}
+    var unseen = jarNotes.map(function(note,index){return index;}).filter(function(index){return jarSeen.indexOf(index) === -1;});
+    jarSeen.push(unseen[Math.floor(Math.random() * unseen.length)]);
+    if(!writeSaved("nazli-first-month-jar-v1",JSON.stringify(jarSeen))){
+      document.getElementById("jarSaveHint").textContent = "tarayıcı notları saklayamıyo askim, kapatmadan oku ♡";
+    }
+    renderJar();
+    if(!prefersReducedMotion){
+      jarDrawing.classList.add("shaking");
+      window.clearTimeout(jarShakeTimer);
+      jarShakeTimer = window.setTimeout(function(){jarDrawing.classList.remove("shaking");},450);
+    }
+  });
 
   function updateTogetherTimer(){
     var now = new Date();
