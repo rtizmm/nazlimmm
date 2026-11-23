@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -2430,6 +2430,91 @@ footer{
 }
 @media(max-width:359px){.month-layout{grid-template-columns:minmax(0,1fr)}.month-stamp{display:none}}
 @media(prefers-reduced-motion:reduce){.jar-drawing.shaking{animation:none}.month-progress span{transition:none}}
+/* === Clean Tabbed & Bento UI Override === */
+header.reveal{
+  max-width:960px;
+  margin:24px auto 12px;
+  padding:28px 20px 18px;
+}
+.ui-tabs{
+  position:sticky;
+  top:12px;
+  z-index:900;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  max-width:960px;
+  margin:0 auto 24px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(20,9,29,0.78);
+  border:1px solid var(--border);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 12px 36px rgba(0,0,0,0.35);
+}
+.ui-tab-btn{
+  appearance:none;
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--muted);
+  font-family:inherit;
+  font-size:0.9rem;
+  font-weight:600;
+  padding:8px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:all .2s ease;
+  white-space:nowrap;
+}
+.ui-tab-btn:hover{
+  color:var(--text);
+  background:rgba(255,255,255,0.08);
+}
+.ui-tab-btn.active{
+  color:#fff;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  box-shadow:0 4px 16px rgba(255,126,179,0.35);
+}
+main{
+  max-width:960px;
+  margin:0 auto;
+  padding:0 16px 80px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+main > section{
+  margin:0 !important;
+  width:100% !important;
+  position:relative !important;
+  z-index:1 !important;
+}
+main > section.ui-hidden{
+  display:none !important;
+}
+main > section.ui-visible{
+  display:block !important;
+  opacity:1 !important;
+  transform:none !important;
+  animation:uiFadeIn .28s ease;
+}
+@keyframes uiFadeIn{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@media (max-width:640px){
+  .ui-tabs{
+    border-radius:20px;
+    padding:8px;
+    gap:6px;
+  }
+  .ui-tab-btn{
+    font-size:0.82rem;
+    padding:7px 12px;
+  }
+}
 </style>
 </head>
 
@@ -2488,6 +2573,14 @@ footer{
     <a href="#loveJar">not kavanozu</a>
   </nav>
 </header>
+
+<div class="ui-tabs" id="uiTabs" role="tablist" aria-label="Sayfa Bölümleri">
+  <button class="ui-tab-btn active" data-tab="home" role="tab" aria-selected="true">♡ Ana Sayfa</button>
+  <button class="ui-tab-btn" data-tab="memories" role="tab" aria-selected="false">⏳ Anılar &amp; Kavanoz</button>
+  <button class="ui-tab-btn" data-tab="letters" role="tab" aria-selected="false">💌 Notlar &amp; Kapsüller</button>
+  <button class="ui-tab-btn" data-tab="games" role="tab" aria-selected="false">🎮 Oyun &amp; Gece</button>
+  <button class="ui-tab-btn" data-tab="all" role="tab" aria-selected="false">✨ Tümü</button>
+</div>
 
 <main>
 
@@ -3931,5 +4024,55 @@ footer{
   }, prefersReducedMotion ? 0 : 200);
 })();
 </script>
+<script>
+(function(){
+  const sections = Array.from(document.querySelectorAll('main > section'));
+  const buttons = Array.from(document.querySelectorAll('#uiTabs .ui-tab-btn'));
+
+  function getTabForSection(sec, idx){
+    const id = sec.id || '';
+    if(['firstMonth','specialDayBanner','birthdaySpecial'].includes(id) || sec.classList.contains('end-surprise')) return 'home';
+    if(['ourTimeline','loveJar'].includes(id)) return 'memories';
+    if(['heartGameSection','nightSection'].includes(id)) return 'games';
+    if(id === 'messageCapsules') return 'letters';
+    // Un-id'd letter/note sections
+    if(idx >= 5 && idx <= 9) return 'letters';
+    return 'games';
+  }
+
+  function applyTab(tab){
+    buttons.forEach(btn => {
+      const active = btn.dataset.tab === tab;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    sections.forEach((sec, idx) => {
+      const secTab = getTabForSection(sec, idx);
+      const show = (tab === 'all') || (secTab === tab);
+      sec.classList.toggle('ui-hidden', !show);
+      sec.classList.toggle('ui-visible', show);
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => applyTab(btn.dataset.tab));
+  });
+
+  // Also hook chapter-nav links so clicking them switches to the right tab
+  document.querySelectorAll('.chapter-nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      const targetId = (a.getAttribute('href') || '').replace('#','');
+      const targetSec = document.getElementById(targetId);
+      if(targetSec){
+        const idx = sections.indexOf(targetSec);
+        applyTab(getTabForSection(targetSec, idx));
+      }
+    });
+  });
+
+  applyTab('home');
+})();
+</script>
 </body>
 </html>
+
